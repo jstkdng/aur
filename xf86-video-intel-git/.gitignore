@@ -1,0 +1,5 @@
+xf86-video-intel-git
+src
+pkg
+*.pkg.*
+*.log
