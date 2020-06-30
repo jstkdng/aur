@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd /home/build
-
 function ungoogled-chromium()
 {
 

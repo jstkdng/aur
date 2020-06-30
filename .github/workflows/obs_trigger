@@ -1,15 +1,15 @@
 #!/bin/bash
 
-cd /home/build
+cd /home/build/${PACKAGE}
 
 declare -a FILES=(PKGBUILD _service)
 
 AUTH="authorization: Basic ${OBS_AUTH}"
 BASE_URL="https://api.opensuse.org/source/${OBS_PROJECT}/${PACKAGE}"
 
-echo $PACKAGE
-echo $AUTH
-echo $BASE_URL
+./$GITHUB_WORKSPACE/.github/workflows/obs_files ${PACKAGE}
+
+cat _service
 
 exit 0
 
