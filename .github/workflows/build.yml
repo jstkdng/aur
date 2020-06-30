@@ -5,6 +5,8 @@ jobs:
     main:
         env:
             PACKAGE: ${{ matrix.PKGS }}
+            OBS_AUTH: ${{ secrets.OBS_AUTH }}
+            OBS_PROJECT: ${{ secrets.OBS_PROJECT }}
         runs-on: ubuntu-20.04
         container:
             image: justkdng/archlinux

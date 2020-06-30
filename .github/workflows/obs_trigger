@@ -5,7 +5,7 @@ cd /home/build
 declare -a FILES=(PKGBUILD _service)
 
 AUTH="authorization: Basic ${OBS_AUTH}"
-BASE_URL="https://api.opensuse.org/source/${OBS_BASE}/${PACKAGE}"
+BASE_URL="https://api.opensuse.org/source/${OBS_PROJECT}/${PACKAGE}"
 
 echo $PACKAGE
 echo $AUTH
