@@ -17,5 +17,5 @@ jobs:
             - name: Checkout latest commit
               uses: actions/checkout@v2
             - name: Test
-              run: .github/workflows/obs_files
+              run: .github/workflows/obs_trigger
 
