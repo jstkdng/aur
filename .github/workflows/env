@@ -1,0 +1,9 @@
+#!/bin/bash
+
+pacman -Syu
+
+cd "$PACKAGE"
+
+cp * /home/build
+
+chown -R build:build /home/build

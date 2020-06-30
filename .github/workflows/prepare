@@ -1,5 +1,6 @@
 #!/bin/bash
+set -e
 
-echo $HOME
-echo $OBS_PROJECT
-echo $PACKAGE
+cd $HOME
+
+makepkg --syncdeps --nobuild --noconfirm
