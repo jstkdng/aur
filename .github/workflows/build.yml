@@ -1,0 +1,19 @@
+name: Build packages
+on: push
+
+jobs:
+    main:
+        env:
+            PACKAGE: ${{ matrix.PKGS }}
+        runs-on: ubuntu-20.04
+        container:
+            image: justkdng/archlinux
+        strategy:
+            matrix:
+                PKGS: ["ungoogled-chromium", "ungoogled-chromium-ozone"]
+        steps:
+            - name: Checkout latest commit
+              uses: actions/checkout@v2
+            - name: Test
+              run: .github/workflows/obs_trigger
+

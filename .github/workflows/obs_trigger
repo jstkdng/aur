@@ -1,0 +1,22 @@
+#!/bin/bash
+
+cd /home/build
+
+declare -a FILES=(PKGBUILD _service)
+
+AUTH="authorization: Basic ${OBS_AUTH}"
+BASE_URL="https://api.opensuse.org/source/${OBS_BASE}/${PACKAGE}"
+
+echo $PACKAGE
+echo $AUTH
+echo $BASE_URL
+
+exit 0
+
+for FILE in "${FILES[@]}"
+do
+    URL="${BASE_URL}/${FILE}?rev=upload"
+    curl -XPUT -H 'Content-Type: application/octet-stream' -H "${AUTH}" --data-binary "@${FILE}" $URL
+done
+
+curl -XPOST -H "${AUTH}" "${BASE_URL}" -F "cmd=commit"
