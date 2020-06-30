@@ -1,13 +1,15 @@
 #!/bin/bash
 
-cd ${PACKAGE}
+cd "$PACKAGE"
 
 declare -a FILES=(PKGBUILD _service)
 
-AUTH="authorization: Basic ${OBS_AUTH}"
-BASE_URL="https://api.opensuse.org/source/${OBS_PROJECT}/${PACKAGE}"
+AUTH="authorization: Basic $OBS_AUTH"
+BASE_URL="https://api.opensuse.org/source/$OBS_PROJECT/$PACKAGE"
 
-./$GITHUB_WORKSPACE/.github/workflows/obs_files ${PACKAGE}
+source $GITHUB_WORKSPACE/.github/workflows/obs_files
+
+"$PACKAGE"
 
 cat _service
 

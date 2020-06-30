@@ -61,5 +61,3 @@ function ungoogled-chromium-ozone()
 {
     ungoogled-chromium ozone
 }
-
-"$@"
