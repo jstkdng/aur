@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/build/${PACKAGE}
+cd ${PACKAGE}
 
 declare -a FILES=(PKGBUILD _service)
 
