@@ -17,5 +17,5 @@ jobs:
             - name: Checkout latest commit
               uses: actions/checkout@v2
             - name: Test
-              run: .github/workflows/obs_trigger
+              run: sudo -u build -EH bash -c .github/workflows/prepare
 
