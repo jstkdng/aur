@@ -35,7 +35,7 @@ provides=('chromium')
 conflicts=('chromium')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
-        https://github.com/Eloston/ungoogled-chromium/archive/$_ungoogled_ver.tar.gz
+        $_pkgname-$_ungoogled_ver.tar.gz::https://github.com/Eloston/ungoogled-chromium/archive/$_ungoogled_ver.tar.gz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-drirc-disable-10bpc-color-configs.conf
         clean-up-a-call-to-set_utf8.patch

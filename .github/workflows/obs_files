@@ -41,8 +41,8 @@ cat > "_service" << EOF
   <service name="download_url">
     <param name="protocol">https</param>
     <param name="host">github.com</param>
-    <param name="path">/Eloston/ungoogled-chromium/archive/${_ungoogled_ver}.zip</param>
-    <param name="filename">ungoogled-chromium-${_ungoogled_ver}.zip</param>
+    <param name="path">/Eloston/ungoogled-chromium/archive/${_ungoogled_ver}.tar.gz</param>
+    <param name="filename">ungoogled-chromium-${_ungoogled_ver}.tar.gz</param>
   </service>
   <service name="tar_scm">
     <param name="scm">git</param>
@@ -60,4 +60,9 @@ EOF
 function ungoogled-chromium-ozone()
 {
     ungoogled-chromium ozone
+}
+
+function ungoogled-chromium-git()
+{
+    ungoogled-chromium
 }
