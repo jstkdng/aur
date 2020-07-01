@@ -3,11 +3,6 @@
 function ungoogled-chromium()
 {
 
-BRANCH=master
-if [ ! -z "$1" ]; then
-    BRANCH=$1
-fi
-
 source PKGBUILD
 
 # Add required dependencies for OBS
@@ -29,8 +24,8 @@ cat > "_service" << EOF
   <service name="download_url">
     <param name="protocol">https</param>
     <param name="host">commondatastorage.googleapis.com</param>
-    <param name="path">/chromium-browser-official/chromium-${pkgver}.tar.xz</param>
-    <param name="filename">chromium-${pkgver}.tar.xz</param>
+    <param name="path">/chromium-browser-official/chromium-${_pkgver}.tar.xz</param>
+    <param name="filename">chromium-${_pkgver}.tar.xz</param>
   </service>
   <service name="download_url">
     <param name="protocol">https</param>
@@ -44,13 +39,13 @@ cat > "_service" << EOF
     <param name="path">/Eloston/ungoogled-chromium/archive/${_ungoogled_ver}.tar.gz</param>
     <param name="filename">ungoogled-chromium-${_ungoogled_ver}.tar.gz</param>
   </service>
-  <service name="tar_scm">
+  <service name="obs_scm">
     <param name="scm">git</param>
-    <param name="url">git://github.com/jstkdng/ungoogled-chromium-archlinux</param>
-    <param name="revision">${BRANCH}</param>
-    <param name="extract">chromium.install</param>
-    <param name="extract">chromium-drirc-disable-10bpc-color-configs.conf</param>
-    <param name="extract">*.patch</param>
+    <param name="url">git://github.com/jstkdng/aur</param>
+    <param name="revision">testing</param>
+    <param name="extract">${PACKAGE}/chromium.install</param>
+    <param name="extract">${PACKAGE}/chromium-drirc-disable-10bpc-color-configs.conf</param>
+    <param name="extract">${PACKAGE}/*.patch</param>
   </service>
 </services>
 EOF
@@ -59,7 +54,7 @@ EOF
 
 function ungoogled-chromium-ozone()
 {
-    ungoogled-chromium ozone
+    ungoogled-chromium
 }
 
 function ungoogled-chromium-git()
