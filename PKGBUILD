@@ -8,12 +8,15 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-git
-pkgver=83.0.4103.116
+pkgver=83.0.4103.116.1.r1.g339a5de
 pkgrel=2
 _pkgname=ungoogled-chromium
+_pkgver=83.0.4103.116
 # sometimes an ungoogled patches can be combined with a new chromium release
 # only if the release only includes security fixes
 _ungoogled_ver=master
+_uc_url="$_pkgname-$_ungoogled_ver::git://github.com/Eloston/ungoogled-chromium.git"
+_uc_sum="SKIP"
 _launcher_ver=6
 pkgdesc="A lightweight approach to removing Google web service dependency (master branch)"
 arch=('x86_64')
@@ -34,8 +37,8 @@ optdepends=('pepper-flash: support for Flash content'
 provides=('chromium')
 conflicts=('chromium')
 install=chromium.install
-source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
-        https://github.com/Eloston/ungoogled-chromium/archive/$_ungoogled_ver.tar.gz
+source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$_pkgver.tar.xz
+        $_uc_url
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-drirc-disable-10bpc-color-configs.conf
         clean-up-a-call-to-set_utf8.patch
@@ -53,7 +56,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-83-gcc-10.patch
         chromium-skia-harmony.patch)
 sha256sums=('bb0c7e8dfee9f3a5e30eca7f34fc9f21caefa82a86c058c552f52b1ae2da2ac3'
-            'SKIP'
+            $_uc_sum
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '58c41713eb6fb33b6eef120f4324fa1fb8123b1fbc4ecbe5662f1f9779b9b6af'
@@ -98,8 +101,13 @@ _unwanted_bundled_libs=(
 )
 depends+=(${_system_libs[@]})
 
+pkgver() {
+  cd "$_pkgname-$_ungoogled_ver"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
-  cd "$srcdir/chromium-$pkgver"
+  cd "$srcdir/chromium-$_pkgver"
 
   # Allow building against system libraries in official builds
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
@@ -191,7 +199,7 @@ prepare() {
 build() {
   make -C chromium-launcher-$_launcher_ver
 
-  cd "$srcdir/chromium-$pkgver"
+  cd "$srcdir/chromium-$_pkgver"
 
   if check_buildoption ccache y; then
     # Avoid falling back to preprocessor mode when sources contain time macros
@@ -216,6 +224,7 @@ build() {
     'linux_use_bundled_binutils=false'
     'use_custom_libcxx=false'
     'use_vaapi=true'
+    'enable_swiftshader=false'
   )
 
   if [[ -n ${_system_libs[icu]+set} ]]; then
@@ -251,7 +260,7 @@ package() {
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
 
-  cd "$srcdir/chromium-$pkgver"
+  cd "$srcdir/chromium-$_pkgver"
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
   install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
@@ -286,10 +295,6 @@ package() {
     resources.pak
     v8_context_snapshot.bin
 
-    # ANGLE
-    libEGL.so
-    libGLESv2.so
-
     chromedriver
   )
 
@@ -299,7 +304,6 @@ package() {
 
   cp "${toplevel_files[@]/#/out/Release/}" "$pkgdir/usr/lib/chromium/"
   install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
-  install -Dm755 -t "$pkgdir/usr/lib/chromium/swiftshader" out/Release/swiftshader/*.so
 
   for size in 24 48 64 128 256; do
     install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \

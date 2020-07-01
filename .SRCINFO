@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium-git
 	pkgdesc = A lightweight approach to removing Google web service dependency (master branch)
-	pkgver = 83.0.4103.116
+	pkgver = 83.0.4103.116.1.r1.g339a5de
 	pkgrel = 2
 	url = https://github.com/ungoogled-software/ungoogled-chromium-archlinux
 	install = chromium.install
@@ -60,7 +60,7 @@ pkgbase = ungoogled-chromium-git
 	provides = chromium
 	conflicts = chromium
 	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-83.0.4103.116.tar.xz
-	source = https://github.com/Eloston/ungoogled-chromium/archive/master.tar.gz
+	source = ungoogled-chromium-master::git://github.com/Eloston/ungoogled-chromium.git
 	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
 	source = chromium-drirc-disable-10bpc-color-configs.conf
 	source = clean-up-a-call-to-set_utf8.patch
