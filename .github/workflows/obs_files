@@ -59,6 +59,10 @@ function ungoogled-chromium-ozone()
 
 function ungoogled-chromium-git()
 {
+    # PKGBUILD after prepare() has updated pkgver
+    rm PKGBUILD
+    cp /home/build/PKGBUILD .
+
     ungoogled-chromium
 
     # replace ungoogled chromium url
