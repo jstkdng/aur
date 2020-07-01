@@ -39,7 +39,7 @@ cat > "_service" << EOF
     <param name="path">/Eloston/ungoogled-chromium/archive/${_ungoogled_ver}.tar.gz</param>
     <param name="filename">ungoogled-chromium-${_ungoogled_ver}.tar.gz</param>
   </service>
-  <service name="obs_scm">
+  <service name="tar_scm">
     <param name="scm">git</param>
     <param name="url">git://github.com/jstkdng/aur</param>
     <param name="revision">testing</param>
