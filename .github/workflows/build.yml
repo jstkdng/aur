@@ -12,7 +12,7 @@ jobs:
             image: justkdng/archlinux
         strategy:
             matrix:
-                PKGS: ["ungoogled-chromium", "ungoogled-chromium-ozone", "ungoogled-chromium-git"]
+                PKGS: ["ungoogled-chromium-ozone", "ungoogled-chromium-git"]
         steps:
             - name: Checkout latest commit
               uses: actions/checkout@v2
