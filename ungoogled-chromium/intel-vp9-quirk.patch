@@ -1,12 +1,73 @@
---- a/media/gpu/vaapi/vaapi_video_decode_accelerator.cc	2020-06-15 11:58:38.000000000 -0700
-+++ b/media/gpu/vaapi/vaapi_video_decode_accelerator.cc	2020-06-23 17:18:20.219862776 -0700
-@@ -1163,6 +1163,9 @@
+diff --git a/media/gpu/vaapi/vaapi_image_processor_backend.cc b/media/gpu/vaapi/vaapi_image_processor_backend.cc
+index 6f63daf..e61a987 100644
+--- a/media/gpu/vaapi/vaapi_image_processor_backend.cc
++++ b/media/gpu/vaapi/vaapi_image_processor_backend.cc
+@@ -32,6 +32,7 @@
+   kMaxValue = kVaapiVppError,
+ };
+ 
++#ifdef OS_CHROMEOS
+ void ReportToUMA(base::RepeatingClosure error_cb, VaIPFailure failure) {
+   base::UmaHistogramEnumeration("Media.VAIP.VppFailure", failure);
+   error_cb.Run();
+@@ -65,6 +66,7 @@
+ 
+   return true;
+ }
++#endif
+ 
+ }  // namespace
+ 
+@@ -78,7 +80,7 @@
+ // VaapiImageProcessorBackend supports ChromeOS only.
+ #if !defined(OS_CHROMEOS)
+   return nullptr;
+-#endif
++#else
+ 
+   auto input_vafourcc = input_config.fourcc.ToVAFourCC();
+   if (!input_vafourcc) {
+@@ -146,6 +148,7 @@
+   return base::WrapUnique<ImageProcessorBackend>(new VaapiImageProcessorBackend(
+       std::move(vaapi_wrapper), input_config, output_config, OutputMode::IMPORT,
+       std::move(error_cb), std::move(backend_task_runner)));
++#endif
+ }
+ 
+ VaapiImageProcessorBackend::VaapiImageProcessorBackend(
+diff --git a/media/gpu/vaapi/vaapi_video_decode_accelerator.cc b/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
+index 5020b2b..820dbd7 100644
+--- a/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
++++ b/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
+@@ -66,6 +66,7 @@
+                             VAVDA_DECODER_FAILURES_MAX + 1);
+ }
+ 
++#if defined(OS_CHROMEOS)
+ // Returns true if the CPU is an Intel Gemini Lake or later (including Kaby
+ // Lake) Cpu platform id's are referenced from the following file in kernel
+ // source arch/x86/include/asm/intel-family.h
+@@ -78,6 +79,7 @@
+       cpuid.model() >= kGeminiLakeModelId;
+   return is_geminilake_or_later;
+ }
++#endif
+ 
+ }  // namespace
+ 
+@@ -1162,6 +1164,7 @@
+   // depends on the bitstream and sometimes it's not enough to cover the amount
    // of frames needed by the client pipeline (see b/133733739).
    // TODO(crbug.com/911754): Enable for VP9 Profile 2.
++#if defined(OS_CHROMEOS)
    if (IsGeminiLakeOrLater() &&
-+#if defined(OS_LINUX)
-+      false &&
-+#endif
        (profile_ == VP9PROFILE_PROFILE0 || profile_ == VP8PROFILE_ANY)) {
      // Add one to the reference frames for the one being currently egressed, and
-     // an extra allocation for both |client_| and |decoder_|, see
+@@ -1171,6 +1174,7 @@
+       num_extra_pics_ = 3;
+     return BufferAllocationMode::kNone;
+   }
++#endif
+ 
+   // If we're here, we have to use the Vpp unit and allocate buffers for
+   // |decoder_|; usually we'd have to allocate the |decoder_|s
