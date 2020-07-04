@@ -20,7 +20,7 @@ _uc_sum="SKIP"
 _launcher_ver=6
 pkgdesc="A lightweight approach to removing Google web service dependency (master branch)"
 arch=('x86_64')
-url="https://github.com/ungoogled-software/ungoogled-chromium-archlinux"
+url="https://github.com/Eloston/ungoogled-chromium"
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'

@@ -1,6 +1,11 @@
 # Maintainer: Seppia <seppia@seppio.fish>
-# Contributors: Eloston
-# Derived from official Chromium and Inox PKGBUILDS and ungoogled-chromium buildkit
+
+# Based on aur/chromium-vaapi, with ungoogled-chromium patches
+
+# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
+# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
 pkgver=83.0.4103.116
@@ -32,7 +37,7 @@ optdepends=('pepper-flash: support for Flash content'
 provides=('chromium')
 conflicts=('chromium')
 install=chromium.install
-source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
+source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$_pkgver.tar.xz
         $_uc_url
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-drirc-disable-10bpc-color-configs.conf
