@@ -1,6 +1,8 @@
 #!/bin/bash
 
-git diff --name-only "$GITHUB_SHA"~6.."$GITHUB_SHA" | grep -q $PACKAGE
-RET=$?
+find /__w -maxdepth 1 -type d
 
-exit $RET
+#git diff --name-only "$GITHUB_SHA"~6.."$GITHUB_SHA" | grep -q $PACKAGE
+#RET=$?
+
+#exit $RET
