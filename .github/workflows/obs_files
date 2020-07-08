@@ -1,6 +1,16 @@
 #!/bin/bash
 
-function ungoogled-chromium()
+_git_pkg()
+{
+    # PKGBUILD after prepare() has updated pkgver
+    rm PKGBUILD
+    cp /home/build/PKGBUILD .
+
+    # remove pkgver function
+    sed -i '/^pkgver() {$/,/^}$/d' PKGBUILD
+}
+
+ungoogled-chromium()
 {
 
 source PKGBUILD
@@ -42,7 +52,7 @@ cat > "_service" << EOF
   <service name="obs_scm">
     <param name="scm">git</param>
     <param name="url">git://github.com/jstkdng/aur</param>
-    <param name="revision">testing</param>
+    <param name="revision">obs</param>
     <param name="extract">${PACKAGE}/chromium.install</param>
     <param name="extract">${PACKAGE}/chromium-drirc-disable-10bpc-color-configs.conf</param>
     <param name="extract">${PACKAGE}/*.patch</param>
@@ -52,24 +62,44 @@ EOF
 
 }
 
-function ungoogled-chromium-ozone()
+ungoogled-chromium-ozone()
 {
     ungoogled-chromium
 }
 
-function ungoogled-chromium-git()
+ungoogled-chromium-git()
 {
-    # PKGBUILD after prepare() has updated pkgver
-    rm PKGBUILD
-    cp /home/build/PKGBUILD .
-
+    _git_pkg
     ungoogled-chromium
 
     # replace ungoogled chromium url
     new_url="\$_pkgname-\$_ungoogled_ver.tar.gz::https:\/\/github.com\/Eloston\/ungoogled-chromium\/archive\/\$_ungoogled_ver.tar.gz"
     sed_param=s/_uc_url=.*/_uc_url=\"${new_url}\"/
     sed -i "$sed_param" PKGBUILD
+}
 
-    # remove pkgver function
-    sed -i '/^pkgver() {$/,/^}$/d' PKGBUILD
+linux-amd-staging-drm-next-git()
+{
+_git_pkg
+
+source PKGBUILD
+
+cat > "_service" << EOF
+<services>
+  <service name="obs_scm">
+    <param name="scm">git</param>
+    <param name="url">git://github.com/jstkdng/aur</param>
+    <param name="revision">obs</param>
+    <param name="extract">${PACKAGE}/config</param>
+    <param name="extract">${PACKAGE}/*.patch</param>
+  </service>
+  <service name="tar_scm">
+    <param name="scm">git</param>
+    <param name="url">git://people.freedesktop.org/~agd5f/linux</param>
+    <param name="revision">amd-staging-drm-next</param>
+    <param name="filename">linux-agd5f</param>
+    <param name="version">_none_</param>
+  </service>
+</services>
+EOF
 }

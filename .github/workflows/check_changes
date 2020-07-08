@@ -1,0 +1,7 @@
+#!/bin/bash
+
+git diff --name-only --diff-filter=AMDR --cached HEAD^ | grep -q $PACKAGE
+RET=$?
+
+echo "::set-env name=DIR_CHANGE::$RET"
+

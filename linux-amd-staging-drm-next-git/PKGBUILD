@@ -4,6 +4,11 @@
 pkgbase=linux-amd-staging-drm-next-git
 pkgdesc='Linux kernel with AMDGPU DC patches'
 
+pkgname=(
+    "linux-amd-staging-drm-next-git"
+    "linux-amd-staging-drm-next-headers-git"
+    "linux-amd-staging-drm-next-docs-git"
+)
 _branch=amd-staging-drm-next
 _kernelname=${pkgbase#linux}
 pkgver=5.6.891392.6302a40c6dfa
@@ -19,7 +24,8 @@ makedepends=(
 options=('!strip')
 _srcname=linux-agd5f
 source=(
-  "${_srcname}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
+  #"${_srcname}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
+  "${_srcname}.tar"
   config         # the main kernel config file
   sphinx-workaround.patch
   gcc10-early-boot-fix.patch

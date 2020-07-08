@@ -1,8 +1,5 @@
 name: Build packages
-on:
-    push:
-        branches:
-            - 'disabled'
+on: push
 
 jobs:
     main:
@@ -15,10 +12,16 @@ jobs:
             image: justkdng/archlinux
         strategy:
             matrix:
-                PKGS: ["ungoogled-chromium", "ungoogled-chromium-ozone", "ungoogled-chromium-git"]
+                PKGS: ["ungoogled-chromium", "ungoogled-chromium-ozone", "ungoogled-chromium-git", 
+                        "linux-amd-staging-drm-next-git"]
         steps:
             - name: Checkout latest commit
               uses: actions/checkout@v2
+            - name: Check changes in package
+              run: .github/workflows/check_changes
+            - name: End workflow
+              uses: andymckay/cancel-action@0.2
+              if: ${{ env.DIR_CHANGE == 1 }}
             - name: Prepare environment
               run: .github/workflows/env
             - name: Run prepare()
