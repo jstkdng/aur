@@ -11,6 +11,7 @@ jobs:
         container:
             image: justkdng/archlinux
         strategy:
+            fail-fast: false
             matrix:
                 PKGS: ["ungoogled-chromium", "ungoogled-chromium-ozone", "ungoogled-chromium-git", 
                         "linux-amd-staging-drm-next-git"]
