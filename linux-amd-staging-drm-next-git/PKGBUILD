@@ -23,9 +23,9 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-agd5f
+_srcurl="${_srcname}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
 source=(
-  #"${_srcname}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
-  "${_srcname}.tar"
+  "$_srcurl"
   config         # the main kernel config file
   sphinx-workaround.patch
   gcc10-early-boot-fix.patch

@@ -84,6 +84,12 @@ _git_pkg
 
 source PKGBUILD
 
+# replace git url
+new_url="\${_srcname}.tar"
+sed_param=s/_srcurl=.*/_srcurl=\"${new_url}\"/
+sed -i "$sed_param" PKGBUILD
+
+# generate _service file
 cat > "_service" << EOF
 <services>
   <service name="obs_scm">
