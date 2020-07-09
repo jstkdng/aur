@@ -109,3 +109,40 @@ cat > "_service" << EOF
 </services>
 EOF
 }
+
+xorg-server-git()
+{
+_git_pkg
+
+source PKGBUILD
+
+# replace git url
+new_url="\${_pkgbase}.tar"
+sed_param=s/_srcurl=.*/_srcurl=\"${new_url}\"/
+sed -i "$sed_param" PKGBUILD
+
+# generate _service file
+cat > "_service" << EOF
+<services>
+  <service name="obs_scm">
+    <param name="scm">git</param>
+    <param name="url">git://github.com/jstkdng/aur</param>
+    <param name="revision">obs</param>
+    <param name="extract">${PACKAGE}/*.conf</param>
+    <param name="extract">${PACKAGE}/*.install</param>
+    <param name="extract">${PACKAGE}/xvfb-*</param>
+  </service>
+  <service name="obs_scm">
+    <param name="scm">git</param>
+    <param name="url">git://gitlab.freedesktop.org/xorg/xserver.git</param>
+    <param name="revision">master</param>
+    <param name="filename">${_pkgbase}</param>
+    <param name="version">_none_</param>
+  </service>
+  <service name="tar" mode="buildtime">
+    <param name="obsinfo">xserver</param>
+    <param name="version">_none_</param>
+  </service>
+</services>
+EOF
+}

@@ -14,7 +14,7 @@ jobs:
             fail-fast: false
             matrix:
                 PKGS: ["ungoogled-chromium", "ungoogled-chromium-ozone", "ungoogled-chromium-git", 
-                        "linux-amd-staging-drm-next-git"]
+                        "linux-amd-staging-drm-next-git", "xorg-server-git"]
         steps:
             - name: Checkout latest commit
               uses: actions/checkout@v2
