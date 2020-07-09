@@ -1,9 +1,6 @@
 #!/bin/bash
 
-find /__w -maxdepth 3 -type d
-pwd
-git log
-
+git diff --name-only HEAD~10..HEAD $PACKAGE
 #git diff --name-only "$GITHUB_SHA"~6.."$GITHUB_SHA" | grep -q $PACKAGE
 #RET=$?
 
