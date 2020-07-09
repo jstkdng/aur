@@ -21,9 +21,7 @@ jobs:
               with:
                   fetch-depth: 0
             - name: Check changes in package
-              run: |
-                  .github/workflows/check_changes
-                  false
+              run: .github/workflows/check_changes
             - name: Prepare environment
               run: .github/workflows/env
             - name: Run prepare()
