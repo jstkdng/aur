@@ -19,7 +19,9 @@ jobs:
             - name: Checkout latest commit
               uses: actions/checkout@v2
             - name: Check changes in package
-              run: .github/workflows/check_changes
+              run: |
+                  .github/workflows/check_changes
+                  false
             - name: Prepare environment
               run: .github/workflows/env
             - name: Run prepare()
