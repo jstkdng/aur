@@ -9,7 +9,7 @@
 
 pkgname=ungoogled-chromium-git
 pkgver=83.0.4103.116.1.r1.g339a5de
-pkgrel=2
+pkgrel=3
 _pkgname=ungoogled-chromium
 _pkgver=83.0.4103.116
 # sometimes an ungoogled patches can be combined with a new chromium release
