@@ -34,14 +34,14 @@ cat > "_service" << EOF
   <service name="download_url">
     <param name="protocol">https</param>
     <param name="host">commondatastorage.googleapis.com</param>
-    <param name="path">/chromium-browser-official/chromium-${_pkgver}.tar.xz</param>
-    <param name="filename">chromium-${_pkgver}.tar.xz</param>
+    <param name="path">/chromium-browser-official/chromium-$_pkgver.tar.xz</param>
+    <param name="filename">chromium-$_pkgver.tar.xz</param>
   </service>
   <service name="download_url">
     <param name="protocol">https</param>
     <param name="host">github.com</param>
-    <param name="path">/foutrelis/chromium-launcher/archive/v6.tar.gz</param>
-    <param name="filename">chromium-launcher-6.tar.gz</param>
+    <param name="path">/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz</param>
+    <param name="filename">chromium-launcher-$_launcher_ver.tar.gz</param>
   </service>
   <service name="download_url">
     <param name="protocol">https</param>
@@ -49,13 +49,19 @@ cat > "_service" << EOF
     <param name="path">/Eloston/ungoogled-chromium/archive/${_ungoogled_ver}.tar.gz</param>
     <param name="filename">ungoogled-chromium-${_ungoogled_ver}.tar.gz</param>
   </service>
+  <service name="download_url">
+    <param name="protocol">https</param>
+    <param name="host">github.com</param>
+    <param name="path">/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz</param>
+    <param name="filename">chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz</param>
+  </service>
   <service name="obs_scm">
     <param name="scm">git</param>
     <param name="url">git://github.com/jstkdng/aur</param>
     <param name="revision">obs</param>
-    <param name="extract">${PACKAGE}/chromium.install</param>
-    <param name="extract">${PACKAGE}/chromium-drirc-disable-10bpc-color-configs.conf</param>
-    <param name="extract">${PACKAGE}/*.patch</param>
+    <param name="extract">$PACKAGE/chromium.install</param>
+    <param name="extract">$PACKAGE/chromium-drirc-disable-10bpc-color-configs.conf</param>
+    <param name="extract">$PACKAGE/*.patch</param>
   </service>
 </services>
 EOF
