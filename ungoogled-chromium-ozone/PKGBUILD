@@ -145,7 +145,7 @@ prepare() {
   patch -Np1 -i ../iwyu-evdev-include-cstring-for-memset-and-memcpy-calls.patch
 
   # Fix vaapi linkage error
-  # patch -Np1 -i ../fix-vaapi-ozone-build.patch
+  patch -Np1 -i ../fix-vaapi-ozone-build.patch
 
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/$_pkgname-$_ungoogled_ver"
