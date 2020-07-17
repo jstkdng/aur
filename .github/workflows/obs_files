@@ -46,14 +46,14 @@ cat > "_service" << EOF
   <service name="download_url">
     <param name="protocol">https</param>
     <param name="host">github.com</param>
-    <param name="path">/Eloston/ungoogled-chromium/archive/${_ungoogled_ver}.tar.gz</param>
-    <param name="filename">ungoogled-chromium-${_ungoogled_ver}.tar.gz</param>
+    <param name="path">/Eloston/ungoogled-chromium/archive/$_ungoogled_ver.tar.gz</param>
+    <param name="filename">ungoogled-chromium-$_ungoogled_ver.tar.gz</param>
   </service>
   <service name="download_url">
     <param name="protocol">https</param>
     <param name="host">github.com</param>
     <param name="path">/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz</param>
-    <param name="filename">chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz</param>
+    <param name="filename">chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz</param>
   </service>
   <service name="obs_scm">
     <param name="scm">git</param>
