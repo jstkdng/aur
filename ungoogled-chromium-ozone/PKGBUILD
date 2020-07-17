@@ -64,8 +64,10 @@ sha256sums=('17970d998c125b40765141f2cd346d1674f05dbd4a28fdcf31f9e3540890c679'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574'
             '8095bf73afbca7c2b07306c5b4dd8f79b66e1053fa4e58b07f71ef938be603f1'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
-source+=(fix-vaapi-ozone-build.patch)
-sha256sums+=('4e7f98b093518cc402448bdc2e35deec5cd047c0dad5bcc7b1ff2e5ba7da98aa')
+source+=(fix-vaapi-ozone-build.patch
+         iwyu-evdev-include-cstring-for-memset-and-memcpy-calls.patch)
+sha256sums+=('4e7f98b093518cc402448bdc2e35deec5cd047c0dad5bcc7b1ff2e5ba7da98aa'
+             'f420fee3fc685209ac9221ddb235e453a471a547dd2149624bf7d1e161186a2c')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -138,6 +140,9 @@ prepare() {
 
   # NVIDIA vdpau-wrapper
   patch -Np1 -i ../nvidia-vdpau.patch
+
+  # add missing include
+  patch -Np1 -i ../iwyu-evdev-include-cstring-for-memset-and-memcpy-calls.patch
 
   # Fix vaapi linkage error
   # patch -Np1 -i ../fix-vaapi-ozone-build.patch
