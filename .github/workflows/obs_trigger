@@ -6,7 +6,7 @@ fi
 
 cd "$PACKAGE"
 
-declare -a FILES=(PKGBUILD _service)
+declare -a FILES=(PKGBUILD _service _constraints)
 
 AUTH="authorization: Basic $OBS_AUTH"
 BASE_URL="https://api.opensuse.org/source/$OBS_PROJECT/$PACKAGE"
