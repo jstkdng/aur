@@ -43,8 +43,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-drirc-disable-10bpc-color-configs.conf
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
-        remove-notifyerror-calls-and-just-send-a-normal-message.patch
-        avoid-calling-deleteforcurrentdocument-from-destructor.patch
+        remove-NotifyError-calls-and-just-send-a-normal-message.patch
+        avoid-calling-DeleteForCurrentDocument-from-destructor.patch
         force-mp3-files-to-have-a-start-time-of-zero.patch
         chromium-ffmpeg-4.3.patch
         intel-vp9-quirk.patch
