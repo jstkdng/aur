@@ -102,8 +102,8 @@ cat > "_service" << EOF
     <param name="scm">git</param>
     <param name="url">git://github.com/jstkdng/aur</param>
     <param name="revision">obs</param>
-    <param name="extract">${PACKAGE}/config</param>
-    <param name="extract">${PACKAGE}/*.patch</param>
+    <param name="extract">$PACKAGE/config</param>
+    <param name="extract">$PACKAGE/*.patch</param>
   </service>
   <service name="tar_scm">
     <param name="scm">git</param>
@@ -134,14 +134,38 @@ cat > "_service" << EOF
     <param name="scm">git</param>
     <param name="url">git://github.com/jstkdng/aur</param>
     <param name="revision">obs</param>
-    <param name="extract">${PACKAGE}/*.conf</param>
-    <param name="extract">${PACKAGE}/*.install</param>
-    <param name="extract">${PACKAGE}/xvfb-*</param>
+    <param name="extract">$PACKAGE/*.conf</param>
+    <param name="extract">$PACKAGE/*.install</param>
+    <param name="extract">$PACKAGE/xvfb-*</param>
   </service>
   <service name="tar_scm">
     <param name="scm">git</param>
     <param name="url">https://gitlab.freedesktop.org/xorg/xserver.git</param>
-    <param name="filename">${_pkgbase}</param>
+    <param name="filename">$_pkgbase</param>
+    <param name="version">_none_</param>
+  </service>
+</services>
+EOF
+}
+
+linux-firmware-git()
+{
+_git_pkg
+
+source PKGBUILD
+
+# replace git url
+new_url="\$pkgbase.tar"
+sed_param=s/_srcurl=.*/_srcurl=\"${new_url}\"/
+sed -i "$sed_param" PKGBUILD
+
+# generate _service file
+cat > "_service" << EOF
+<services>
+  <service name="tar_scm">
+    <param name="scm">git</param>
+    <param name="url">https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git</param>
+    <param name="filename">$pkgbase</param>
     <param name="version">_none_</param>
   </service>
 </services>
