@@ -8,7 +8,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-git
-pkgver=83.0.4103.116.1.r1.g339a5de
+pkgver=84.0.4147.89.1.r0.gdf199c0
 pkgrel=1
 _pkgname=ungoogled-chromium
 _pkgver=84.0.4147.89
