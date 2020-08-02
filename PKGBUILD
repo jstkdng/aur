@@ -11,7 +11,7 @@ pkgname=ungoogled-chromium-git
 pkgver=84.0.4147.89.1.r0.gdf199c0
 pkgrel=1
 _pkgname=ungoogled-chromium
-_pkgver=84.0.4147.89
+_pkgver=84.0.4147.105
 # sometimes an ungoogled patches can be combined with a new chromium release
 # only if the release only includes security fixes
 _ungoogled_ver=master
@@ -51,7 +51,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         wayland-egl.patch
         nvidia-vdpau.patch
         chromium-skia-harmony.patch)
-sha256sums=('17970d998c125b40765141f2cd346d1674f05dbd4a28fdcf31f9e3540890c679'
+sha256sums=('caf4ebeb2a2333454c3067a2534aeecaab5029aa78fc0d8b27f79ad3b9c5ccac'
             $_uc_sum
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
