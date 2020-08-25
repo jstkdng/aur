@@ -8,12 +8,10 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-git
-pkgver=84.0.4147.89.1.r0.gdf199c0
+pkgver=84.0.4147.135.1.r8.ge420b03
 pkgrel=1
 _pkgname=ungoogled-chromium
-_pkgver=84.0.4147.105
-# sometimes an ungoogled patches can be combined with a new chromium release
-# only if the release only includes security fixes
+_pkgver=$(echo $pkgver | cut -d\. -f1-4)
 _ungoogled_ver=master
 _uc_url="$_pkgname-$_ungoogled_ver::git://github.com/Eloston/ungoogled-chromium.git"
 _uc_sum="SKIP"
@@ -51,7 +49,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         wayland-egl.patch
         nvidia-vdpau.patch
         chromium-skia-harmony.patch)
-sha256sums=('caf4ebeb2a2333454c3067a2534aeecaab5029aa78fc0d8b27f79ad3b9c5ccac'
+sha256sums=('dd41001596d0e17051ddcece3db6c0cdbe92fe23375d56fbcfba624a5f4996d8'
             $_uc_sum
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
