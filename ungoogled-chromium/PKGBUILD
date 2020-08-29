@@ -11,13 +11,14 @@
 pkgname=ungoogled-chromium
 pkgver=85.0.4183.83
 pkgrel=1
+_launcher_ver=6
+_gcc_patchset=2
 _pkgname=$pkgname
 _pkgver=$pkgver
 _ungoogled_ver="master"
-_uc_url="$_pkgname-$_ungoogled_ver.tar.gz::https://github.com/Zoraver/ungoogled-chromium/archive/$_ungoogled_ver.tar.gz"
+_uc_usr="Zoraver"
+_uc_url="$_pkgname-$_ungoogled_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_ungoogled_ver.tar.gz"
 _uc_sum="SKIP"
-_launcher_ver=6
-_gcc_patchset=2
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
 url="https://github.com/Eloston/ungoogled-chromium"

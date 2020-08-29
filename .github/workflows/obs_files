@@ -63,7 +63,7 @@ cat > "_service" << EOF
   <service name="download_url">
     <param name="protocol">https</param>
     <param name="host">github.com</param>
-    <param name="path">/Eloston/ungoogled-chromium/archive/$_ungoogled_ver.tar.gz</param>
+    <param name="path">/$_uc_usr/ungoogled-chromium/archive/$_ungoogled_ver.tar.gz</param>
     <param name="filename">ungoogled-chromium-$_ungoogled_ver.tar.gz</param>
   </service>
   <service name="download_url">
