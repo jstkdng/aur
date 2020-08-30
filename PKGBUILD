@@ -10,13 +10,15 @@
 pkgname=ungoogled-chromium-git
 pkgver=84.0.4147.135.1.r8.ge420b03
 pkgrel=1
-_pkgname=ungoogled-chromium
-_pkgver=$(echo $pkgver | cut -d\. -f1-4)
-_ungoogled_ver=master
-_uc_url="$_pkgname-$_ungoogled_ver::git://github.com/Eloston/ungoogled-chromium.git"
-_uc_sum="SKIP"
 _launcher_ver=6
 _gcc_patchset=3
+_pkgname=ungoogled-chromium
+_pkgver=$(echo $pkgver | cut -d\. -f1-4)
+# ungoogled chromium variables
+_uc_ver=master
+_uc_usr=Eloston
+_uc_url="$_pkgname-$_uc_ver::git://github.com/$_uc_usr/ungoogled-chromium.git"
+_uc_sum="SKIP"
 pkgdesc="A lightweight approach to removing Google web service dependency (master branch)"
 arch=('x86_64')
 url="https://github.com/Eloston/ungoogled-chromium"
@@ -90,7 +92,7 @@ _unwanted_bundled_libs=(
 depends+=(${_system_libs[@]})
 
 pkgver() {
-  cd "$_pkgname-$_ungoogled_ver"
+  cd "$_pkgname-$_uc_ver"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -141,7 +143,7 @@ prepare() {
   patch -Np1 -i ../nvidia-vdpau.patch
 
   # Ungoogled Chromium changes
-  _ungoogled_repo="$srcdir/$_pkgname-$_ungoogled_ver"
+  _ungoogled_repo="$srcdir/$_pkgname-$_uc_ver"
   _utils="${_ungoogled_repo}/utils"
   msg2 'Pruning binaries'
   python "$_utils/prune_binaries.py" ./ "$_ungoogled_repo/pruning.list"
@@ -219,7 +221,7 @@ build() {
   fi
 
   # Append ungoogled chromium flags to _flags array
-  _ungoogled_repo="$srcdir/$_pkgname-$_ungoogled_ver"
+  _ungoogled_repo="$srcdir/$_pkgname-$_uc_ver"
   readarray -t -O ${#_flags[@]} _flags < "${_ungoogled_repo}/flags.gn"
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
