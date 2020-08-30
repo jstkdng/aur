@@ -63,8 +63,8 @@ cat > "_service" << EOF
   <service name="download_url">
     <param name="protocol">https</param>
     <param name="host">github.com</param>
-    <param name="path">/$_uc_usr/ungoogled-chromium/archive/$_ungoogled_ver.tar.gz</param>
-    <param name="filename">ungoogled-chromium-$_ungoogled_ver.tar.gz</param>
+    <param name="path">/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz</param>
+    <param name="filename">ungoogled-chromium-$_uc_ver.tar.gz</param>
   </service>
   <service name="download_url">
     <param name="protocol">https</param>
@@ -96,7 +96,7 @@ ungoogled-chromium-git()
     ungoogled-chromium
 
     # replace ungoogled chromium url
-    new_url="\$_pkgname-\$_ungoogled_ver.tar.gz::https:\/\/github.com\/Eloston\/ungoogled-chromium\/archive\/\$_ungoogled_ver.tar.gz"
+    new_url="\$_pkgname-\$_uc_ver.tar.gz::https:\/\/github.com\/Eloston\/ungoogled-chromium\/archive\/\$_uc_ver.tar.gz"
     sed_param=s/_uc_url=.*/_uc_url=\"${new_url}\"/
     sed -i "$sed_param" PKGBUILD
 }
