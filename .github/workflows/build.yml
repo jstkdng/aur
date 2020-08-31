@@ -19,7 +19,8 @@ jobs:
             matrix:
                 PKGS: [
                         "ungoogled-chromium",
-                        "ungoogled-chromium-ozone"
+                        "ungoogled-chromium-ozone",
+                        "znc"
                       ]
         steps:
             - name: Checkout latest commit

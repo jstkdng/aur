@@ -90,6 +90,28 @@ ungoogled-chromium-ozone()
     ungoogled-chromium
 }
 
+znc()
+{
+source PKGBUILD
+
+cat > "_service" << EOF
+<services>
+  <service name="obs_scm">
+    <param name="scm">git</param>
+    <param name="url">git://github.com/jstkdng/aur</param>
+    <param name="revision">obs</param>
+    <param name="extract">$PACKAGE/znc.*</param>
+  </service>
+  <service name="download_url">
+    <param name="protocol">https</param>
+    <param name="host">znc.in</param>
+    <param name="path">/releases/archive/$pkgname-$pkgver.tar.gz</param>
+    <param name="filename">$pkgname-$pkgver.tar.gz</param>
+  </service>
+</services>
+EOF
+}
+
 ungoogled-chromium-git()
 {
     _git_pkg
