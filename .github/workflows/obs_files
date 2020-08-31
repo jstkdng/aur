@@ -108,6 +108,12 @@ cat > "_service" << EOF
     <param name="path">/releases/archive/$pkgname-$pkgver.tar.gz</param>
     <param name="filename">$pkgname-$pkgver.tar.gz</param>
   </service>
+  <service name="download_url">
+    <param name="protocol">https</param>
+    <param name="host">znc.in</param>
+    <param name="path">/releases/archive/$pkgname-$pkgver.tar.gz.sig</param>
+    <param name="filename">$pkgname-$pkgver.tar.gz.sig</param>
+  </service>
 </services>
 EOF
 }
