@@ -17,7 +17,7 @@ _pkgname=$pkgname
 _pkgver=$pkgver
 # ungoogled chromium variables
 _uc_ver=$pkgver-1
-_uc_usr=Elosgon
+_uc_usr=Eloston
 _uc_sum='bea558d575742968ffb6e504e3f81fc498337fb3578f8f2b9a0a03f86cd076fb'
 _uc_url="$_pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz"
 pkgdesc="A lightweight approach to removing Google web service dependency"
