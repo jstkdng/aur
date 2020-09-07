@@ -58,6 +58,8 @@ sha256sums=('2064aa4502b87c025f2233b59d94e9e3d1c00bfeaf891e1d973687de5740e73b'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574'
             '8095bf73afbca7c2b07306c5b4dd8f79b66e1053fa4e58b07f71ef938be603f1'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
+source+=(fix-compilation.patch)
+sha256sums+=('SKIP')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -116,6 +118,9 @@ prepare() {
 
   # NVIDIA vdpau-wrapper
   patch -Np1 -i ../nvidia-vdpau.patch
+
+  # Fix compilation
+  patch -Np1 -i ../fix-compilation.patch
 
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/$_pkgname-$_uc_ver"
