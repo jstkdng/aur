@@ -196,6 +196,7 @@ build() {
 
   # Append ozone flags
   local _ozone_flags=(
+    'use_x11=true'
     'use_ozone=true'
     'ozone_platform_wayland=true'
     'ozone_platform_x11=true'
