@@ -8,7 +8,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-git
-pkgver=85.0.4183.83.2.r0.gb6960ba
+pkgver=85.0.4183.102.1.r2.g1e3e864
 pkgrel=1
 _launcher_ver=6
 _gcc_patchset=2
@@ -48,7 +48,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         wayland-egl.patch
         nvidia-vdpau.patch
         chromium-skia-harmony.patch)
-sha256sums=('2064aa4502b87c025f2233b59d94e9e3d1c00bfeaf891e1d973687de5740e73b'
+sha256sums=('8a68d474724a7a8acfc7742405942836f08e30e713f12f8c3ada46ee6a805e0c'
             $_uc_sum
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
