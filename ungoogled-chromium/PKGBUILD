@@ -173,7 +173,7 @@ build() {
     'is_official_build=true' # implies is_cfi=true on x86_64
     'ffmpeg_branding="Chrome"'
     'proprietary_codecs=true'
-    'rtc_use_pipewire=true'
+    #'rtc_use_pipewire=true'
     'link_pulseaudio=true'
     'use_gnome_keyring=false'
     'use_sysroot=false'
