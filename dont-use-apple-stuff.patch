@@ -1,0 +1,13 @@
+diff --git a/third_party/webrtc/BUILD.gn b/third_party/webrtc/BUILD.gn
+index 7c0785c..4250c97 100644
+--- a/third_party/webrtc/BUILD.gn
++++ b/third_party/webrtc/BUILD.gn
+@@ -414,7 +414,7 @@ config("common_config") {
+ }
+
+ config("common_objc") {
+-  libs = [ "Foundation.framework" ]
++  #libs = [ "Foundation.framework" ]
+
+   if (rtc_use_metal_rendering) {
+     defines = [ "RTC_SUPPORTS_METAL" ]
