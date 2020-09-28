@@ -8,7 +8,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-git
-pkgver=85.0.4183.102.1.r2.g1e3e864
+pkgver=85.0.4183.121.1.r0.ge46b774
 pkgrel=1
 _launcher_ver=6
 _gcc_patchset=2
@@ -17,8 +17,8 @@ _pkgver=$(echo $pkgver | cut -d\. -f1-4)
 # ungoogled chromium variables
 _uc_ver=master
 _uc_usr=Eloston
+_uc_sum='SKIP'
 _uc_url="$_pkgname-$_uc_ver::git://github.com/$_uc_usr/ungoogled-chromium.git"
-_uc_sum="SKIP"
 pkgdesc="A lightweight approach to removing Google web service dependency (master branch)"
 arch=('x86_64')
 url="https://github.com/Eloston/ungoogled-chromium"
@@ -47,8 +47,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         intel-vp9-quirk.patch
         wayland-egl.patch
         nvidia-vdpau.patch
-        chromium-skia-harmony.patch)
-sha256sums=('8a68d474724a7a8acfc7742405942836f08e30e713f12f8c3ada46ee6a805e0c'
+        chromium-skia-harmony.patch
+        dont-use-apple-stuff.patch)
+sha256sums=('e018547e54566410fb365d9f3dae10037c30fca5debe6ba8baceef3ad3b03d28'
             $_uc_sum
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
@@ -57,7 +58,8 @@ sha256sums=('8a68d474724a7a8acfc7742405942836f08e30e713f12f8c3ada46ee6a805e0c'
             'a25fc6fccb84fd0a58a799661cd9c4ffeb2731fa49268f43aa7108f1542c5af6'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574'
             '8095bf73afbca7c2b07306c5b4dd8f79b66e1053fa4e58b07f71ef938be603f1'
-            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
+            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
+            '9e2f7d5e28677d938abd78b11f6658b4f06a4de00058280b3fa1173e989aa94f')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -121,6 +123,9 @@ prepare() {
 
   # NVIDIA vdpau-wrapper
   patch -Np1 -i ../nvidia-vdpau.patch
+
+  # don't use frameworks to list framework dependencies
+  patch -Np1 -i ../dont-use-apple-stuff.patch
 
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/$_pkgname-$_uc_ver"
