@@ -2,7 +2,7 @@
 # based on core/linux: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-amd-staging-drm-next-git
-pkgdesc='Linux kernel with AMDGPU DC patches'
+pkgdesc='Linux kernel with AMDGPU WIP patches'
 
 pkgname=(
     "linux-amd-staging-drm-next-git"
@@ -11,7 +11,7 @@ pkgname=(
 )
 _branch=amd-staging-drm-next
 _kernelname=${pkgbase#linux}
-pkgver=5.6.891392.6302a40c6dfa
+pkgver=5.10.949809.8f0ba3310c12
 pkgrel=1
 arch=(x86_64)
 url='https://gitlab.freedesktop.org/drm/amd'
