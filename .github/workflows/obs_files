@@ -212,4 +212,33 @@ cat > "_service" << EOF
 EOF
 }
 
+linux-kamakiri()
+{
+source PKGBUILD
+
+new_url="\$pkgbase.tar"
+sed_param=s/_srcurl=.*/_srcurl=\"${new_url}\"/
+sed -i "$sed_param" PKGBUILD
+
+# generate _service file
+cat > "_service" << EOF
+<services>
+  <service name="obs_scm">
+    <param name="scm">git</param>
+    <param name="url">git://github.com/jstkdng/aur</param>
+    <param name="revision">obs</param>
+    <param name="extract">$PACKAGE/config</param>
+    <param name="extract">$PACKAGE/*.patch</param>
+  </service>
+  <service name="tar_scm">
+    <param name="scm">git</param>
+    <param name="url">https://git.archlinux.org/linux.git</param>
+    <param name="filename">$pkgbase</param>
+    <param name="revision">$_srctag</param>
+    <param name="version">_none_</param>
+  </service>
+</services>
+EOF
+}
+
 _gen_constraints

@@ -20,7 +20,8 @@ jobs:
                 PKGS: [
                         "ungoogled-chromium",
                         "ungoogled-chromium-ozone",
-                        "znc"
+                        "znc",
+                        "linux-kamakiri"
                       ]
         steps:
             - name: Checkout latest commit
