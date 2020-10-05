@@ -2,6 +2,12 @@
 
 pkgbase=linux-kamakiri
 pkgver=5.8.13.arch1
+
+pkgname=(
+    "linux-kamakiri"
+    "linux-kamakiri-headers"
+    "linux-kamakiri-docs"
+)
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
