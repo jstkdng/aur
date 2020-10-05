@@ -20,7 +20,7 @@ makedepends=(
   git
 )
 options=('!strip')
-_srcname=archlinux-linux
+_srcname=$pkgbase
 _srcurl="$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
 source=(
   $_srcurl
