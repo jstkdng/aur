@@ -117,9 +117,6 @@ prepare() {
   # Wayland/EGL regression (crbug #1071528 #1071550)
   patch -Np1 -i ../wayland-egl.patch
 
-  # NVIDIA vdpau-wrapper
-  patch -Np1 -i ../nvidia-vdpau.patch
-
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/$_pkgname-$_uc_ver"
   _utils="${_ungoogled_repo}/utils"
