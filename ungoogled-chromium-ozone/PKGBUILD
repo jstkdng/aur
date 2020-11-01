@@ -62,8 +62,6 @@ sha256sums=('f27bdb02ebf3c48abe054c73f1ae57e22a22535ea34f5edf8693ab8432a7c717'
             '1ec617b362bf97cce4254debd04d8396f17dec0ae1071b52ec8c1c3d86dbd322'
             'bf86923eaee5529ab9fb6148bd6c33a73c8746ab1b4ade0cd3b761109bc55826'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
-source+=(fix-compilation.patch)
-sha256sums+=('SKIP')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -119,9 +117,6 @@ prepare() {
 
   # Wayland/EGL regression (crbug #1071528 #1071550)
   patch -Np1 -i ../wayland-egl.patch
-
-  # Fix compilation
-  #patch -Np1 -i ../fix-compilation.patch
 
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/$_pkgname-$_uc_ver"
