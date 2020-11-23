@@ -16,9 +16,9 @@ _gcc_patchset=9
 _pkgname=$(echo $pkgname | cut -d\- -f1-2)
 _pkgver=$(echo $pkgver | cut -d\. -f1-4)
 # ungoogled chromium variables
-_uc_ver=master
-_uc_usr=Zoraver
-_uc_sum='SKIP'
+_uc_ver=87.0.4280.67-1
+_uc_usr=Eloston
+_uc_sum='158d1210be8d0f72ec09724a22907b5a737c3a25b19632d2eb93ebdfbe3f1ac9'
 _uc_url="$_pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz"
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
