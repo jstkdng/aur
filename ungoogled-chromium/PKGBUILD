@@ -99,9 +99,6 @@ prepare() {
   patch -Np1 -i ../patches/chromium-87-ServiceWorkerContainerHost-crash.patch
   patch -Np1 -i ../patches/chromium-87-openscreen-include.patch
 
-  # https://crbug.com/skia/6663#c10
-  patch -Np0 -i ../chromium-skia-harmony.patch
-
   # Wayland/EGL regression (crbug #1071528 #1071550)
   patch -Np1 -i ../wayland-egl.patch
 
