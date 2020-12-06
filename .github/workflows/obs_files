@@ -84,11 +84,6 @@ EOF
 
 }
 
-ungoogled-chromium-ozone()
-{
-    ungoogled-chromium
-}
-
 znc()
 {
 source PKGBUILD

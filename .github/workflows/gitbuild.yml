@@ -20,8 +20,6 @@ jobs:
             fail-fast: false
             matrix:
                 PKGS: [
-                        "ungoogled-chromium-git",
-                        "linux-amd-staging-drm-next-git",
                         "xorg-server-git",
                         "linux-firmware-git"
                       ]
