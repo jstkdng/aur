@@ -76,7 +76,6 @@ cat > "_service" << EOF
     <param name="scm">git</param>
     <param name="url">git://github.com/jstkdng/aur</param>
     <param name="revision">obs</param>
-    <param name="extract">$PACKAGE/chromium.install</param>
     <param name="extract">$PACKAGE/chromium-drirc-disable-10bpc-color-configs.conf</param>
     <param name="extract">$PACKAGE/*.patch</param>
   </service>
