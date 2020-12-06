@@ -4,5 +4,5 @@ git diff --name-only HEAD~2..HEAD | egrep -q "\<${PACKAGE}\>([^-]|$)"
 
 RET=$?
 if [[ $RET -eq 1 ]]; then
-    echo "::set-env name=no_changes::$RET"
+	echo "no_changes=$RET" >> $GITHUB_ENV
 fi
