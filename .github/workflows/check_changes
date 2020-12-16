@@ -1,5 +1,8 @@
 #!/bin/bash
 
+git --version
+git diff --name-only HEAD~2..HEAD
+
 git diff --name-only HEAD~2..HEAD | egrep -q "\<${PACKAGE}\>([^-]|$)"
 
 RET=$?
