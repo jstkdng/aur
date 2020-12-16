@@ -138,7 +138,7 @@ package_xorg-server-git() {
   _install fakeinstall/usr/lib/xorg/modules/*
   _install fakeinstall/usr/share/X11/xorg.conf.d/10-quirks.conf
   _install fakeinstall/usr/share/man/man1/{Xorg,Xorg.wrap,cvt,gtf}.1
-  _install fakeinstall/usr/share/man/man4/{exa,fbdevhw,modesetting}.4
+  _install fakeinstall/usr/share/man/man4/{exa,fbdevhw,modesetting,inputtestdrv}.4
   _install fakeinstall/usr/share/man/man5/{Xwrapper.config,xorg.conf,xorg.conf.d}.5
 
   # distro specific files must be installed in /usr/share/X11/xorg.conf.d
