@@ -19,8 +19,7 @@ jobs:
             matrix:
                 PKGS: [
                         "ungoogled-chromium",
-                        "linux-kamakiri",
-                        "znc"
+                        "linux-kamakiri"
                       ]
         steps:
             - name: Checkout latest commit
