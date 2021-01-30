@@ -16,8 +16,8 @@ _gcc_patchset=3
 _pkgname=$(echo $pkgname | cut -d\- -f1-2)
 _pkgver=$(echo $pkgver | cut -d\. -f1-4)
 # ungoogled chromium variables
-_uc_ver=88
-_uc_usr=tangalbert919
+_uc_ver=$pkgver-1
+_uc_usr=Eloston
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
 url="https://github.com/Eloston/ungoogled-chromium"
@@ -43,7 +43,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         wayland-egl.patch
         subpixel-anti-aliasing-in-FreeType-2.8.1.patch)
 sha256sums=('7dbdda0df8955811ada33a9505cad2f2e17f007827c435b591ba571c5dcd0147'
-            'SKIP'
+            '14f195e24b85349c60f3dcf724e1433dbceb2739829f88a713178253644bfa44'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             'e5a60a4c9d0544d3321cc241b4c7bd4adb0a885f090c6c6c21581eac8e3b4ba9'
