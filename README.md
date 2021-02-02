@@ -22,3 +22,4 @@ Server = https://repo.vin.ovh/arch/$arch
 ```
 
 Finally, update pacman's repository database: `sudo pacman -Sy`
+
