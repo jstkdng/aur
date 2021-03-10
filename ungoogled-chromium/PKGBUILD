@@ -12,7 +12,7 @@ pkgname=ungoogled-chromium
 pkgver=89.0.4389.82
 pkgrel=2
 _launcher_ver=7
-_gcc_patchset=6
+_gcc_patchset=7
 _pkgname=$(echo $pkgname | cut -d\- -f1-2)
 _pkgver=$(echo $pkgver | cut -d\. -f1-4)
 # ungoogled chromium variables
