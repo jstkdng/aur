@@ -110,7 +110,7 @@ prepare() {
   patch -Np1 -i ../patches/chromium-89-AXTreeSerializer-include.patch
 
   # Wayland/EGL regression (crbug #1071528 #1071550)
-  #patch -Np1 -i ../wayland-egl.patch
+  patch -Np1 -i ../wayland-egl.patch
 
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/$_pkgname-$_uc_ver"

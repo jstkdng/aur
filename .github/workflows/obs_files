@@ -37,7 +37,7 @@ newdeps=$(printf "'%s' " "${depends[@]}")
 makedeps=$(printf "'%s' " "${makedepends[@]}")
 
 makedeps=$(printf '%s\n' "${makedeps//\'java-runtime-headless\'/}")
-makedeps="${makedeps}'jack' 'jre-openjdk-headless'"
+makedeps="${makedeps}'jack' 'jre-openjdk-headless' 'wayland-protocols'"
 
 sed -r -i \
     -e '/^depends=/,/[)]$/cdepends=('"${newdeps}"')' \
