@@ -1,0 +1,37 @@
+name: Build git packages
+on:
+    schedule:
+        - cron: '0 0 * * *'
+
+defaults:
+    run:
+        shell: bash
+
+jobs:
+    main-git:
+        env:
+            PACKAGE: ${{ matrix.PKGS }}
+            OBS_AUTH: ${{ secrets.OBS_AUTH }}
+            OBS_PROJECT: ${{ secrets.OBS_PROJECT }}
+        runs-on: ubuntu-20.04
+        container:
+            image: justkdng/archlinux
+        strategy:
+            fail-fast: false
+            matrix:
+                PKGS: [
+                        "xorg-server-git",
+                        "linux-firmware-git"
+                      ]
+        steps:
+            - name: Checkout latest commit
+              uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
+                  #- name: Prepare environment
+                  #run: .github/workflows/env
+                  #- name: Run prepare()
+                  #run: sudo -u build -EH bash -c .github/workflows/prepare
+            - name: Trigger OBS build
+              run: .github/workflows/obs_trigger
+

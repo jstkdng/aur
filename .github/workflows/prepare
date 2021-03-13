@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [[ ${no_changes+x} ]]; then
+    exit 0
+fi
+
+set -e
+
+cd $HOME
+
+makepkg --syncdeps --nobuild --noconfirm --skippgpcheck

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [[ ${no_changes+x} ]]; then
+    exit 0
+fi
+
+pacman -Syu --noconfirm wget
+
+cd "$PACKAGE"
+
+cp * /home/build
+
+chown -R build:build /home/build
+
+wget https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/pacman/trunk/makepkg.conf
+mv makepkg.conf /etc/makepkg.conf

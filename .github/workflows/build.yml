@@ -1,0 +1,36 @@
+name: Build packages
+on: push
+
+defaults:
+    run:
+        shell: bash
+
+jobs:
+    main:
+        env:
+            PACKAGE: ${{ matrix.PKGS }}
+            OBS_AUTH: ${{ secrets.OBS_AUTH }}
+            OBS_PROJECT: ${{ secrets.OBS_PROJECT }}
+        runs-on: ubuntu-latest
+        container: justkdng/archlinux:latest
+        strategy:
+            fail-fast: false
+            matrix:
+                PKGS: [
+                        "ungoogled-chromium",
+                        "linux-kamakiri"
+                      ]
+        steps:
+            - name: Checkout latest commit
+              uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
+            - name: Check changes in package
+              run: .github/workflows/check_changes
+            - name: Prepare environment
+              run: .github/workflows/env
+            - name: Run prepare()
+              run: sudo -u build -EH bash -c .github/workflows/prepare
+            - name: Trigger OBS build
+              run: .github/workflows/obs_trigger
+
