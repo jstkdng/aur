@@ -75,7 +75,6 @@ cat > "_service" << EOF
   <service name="obs_scm">
     <param name="scm">git</param>
     <param name="url">git://github.com/jstkdng/aur</param>
-    <param name="revision">obs</param>
     <param name="extract">$PACKAGE/chromium-drirc-disable-10bpc-color-configs.conf</param>
     <param name="extract">$PACKAGE/*.patch</param>
   </service>
@@ -93,7 +92,6 @@ cat > "_service" << EOF
   <service name="obs_scm">
     <param name="scm">git</param>
     <param name="url">git://github.com/jstkdng/aur</param>
-    <param name="revision">obs</param>
     <param name="extract">$PACKAGE/znc.*</param>
   </service>
   <service name="download_url">
@@ -134,7 +132,6 @@ cat > "_service" << EOF
   <service name="obs_scm">
     <param name="scm">git</param>
     <param name="url">git://github.com/jstkdng/aur</param>
-    <param name="revision">obs</param>
     <param name="extract">$PACKAGE/config</param>
     <param name="extract">$PACKAGE/*.patch</param>
   </service>
@@ -166,7 +163,6 @@ cat > "_service" << EOF
   <service name="obs_scm">
     <param name="scm">git</param>
     <param name="url">git://github.com/jstkdng/aur</param>
-    <param name="revision">obs</param>
     <param name="extract">$PACKAGE/*.conf</param>
     <param name="extract">$PACKAGE/*.install</param>
     <param name="extract">$PACKAGE/xvfb-*</param>
