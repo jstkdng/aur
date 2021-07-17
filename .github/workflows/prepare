@@ -8,4 +8,4 @@ set -e
 
 cd $HOME
 
-makepkg --syncdeps --nobuild --noconfirm --skippgpcheck
+yes | makepkg --syncdeps --nobuild --skippgpcheck
