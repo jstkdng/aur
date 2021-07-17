@@ -15,8 +15,7 @@ makedepends=(
 	'xorg-util-macros'
 )
 checkdepends=('python-libevdev')
-provides=('xorgproto')
-conflicts=(${provides[@]})
+conflicts=('xorgproto')
 _srcurl="$pkgname::git+https://gitlab.freedesktop.org/xorg/proto/$_pkgname.git"
 source=($_srcurl)
 sha512sums=('SKIP')
