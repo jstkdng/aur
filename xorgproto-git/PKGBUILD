@@ -19,7 +19,7 @@ conflicts=('xorgproto')
 _srcurl="$pkgname::git+https://gitlab.freedesktop.org/xorg/proto/$_pkgname.git"
 source=($_srcurl)
 sha512sums=('SKIP')
- 
+
 pkgver() {
   cd "$pkgname"
   echo $(git describe --long | cut -d "-" -f2-3 | tr - .).r$(git rev-list HEAD --count).$(git describe --long | cut -d "-" -f4)
