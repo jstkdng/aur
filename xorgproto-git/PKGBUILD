@@ -17,7 +17,8 @@ makedepends=(
 checkdepends=('python-libevdev')
 provides=('xorgproto')
 conflicts=(${provides[@]})
-source=("$pkgname::git://anongit.freedesktop.org/xorg/proto/$_pkgname")
+_srcurl="$pkgname::git://anongit.freedesktop.org/xorg/proto/$_pkgname"
+source=($_srcurl)
 sha512sums=('SKIP')
 
 pkgver() {

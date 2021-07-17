@@ -19,7 +19,7 @@ jobs:
             fail-fast: false
             matrix:
                 PKGS: [
-                        "xorg-server-git",
+                        "xorgproto-git",
                         "linux-firmware-git"
                       ]
         steps:
