@@ -16,7 +16,7 @@ options=(!strip)
 _srcurl="${pkgbase}::git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git"
 source=($_srcurl)
 sha256sums=('SKIP')
-
+ 
 pkgver() {
   cd "${srcdir}/${pkgbase}"
 

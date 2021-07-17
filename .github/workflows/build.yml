@@ -19,7 +19,10 @@ jobs:
                 PKGS: [
                         "ungoogled-chromium",
                         "linux-kamakiri",
-                        "xmrig-donateless"
+                        "xmrig-donateless",
+                        "xorgproto-git",
+                        "xorg-server-git",
+                        "linux-firmware-git"
                       ]
         steps:
             - name: Checkout latest commit
