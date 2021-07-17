@@ -83,6 +83,27 @@ EOF
 
 }
 
+xmrig-donateless()
+{
+source PKGBUILD
+
+cat > "_service" << EOF
+<services>
+  <service name="obs_scm">
+    <param name="scm">git</param>
+    <param name="url">git://github.com/jstkdng/aur</param>
+    <param name="extract">$PACKAGE/xmrig.*</param>
+  </service>
+  <service name="download_url">
+    <param name="protocol">https</param>
+    <param name="host">github.com</param>
+    <param name="path">/xmrig/xmrig/archive/v${pkgver}.tar.gz</param>
+    <param name="filename">${pkgname}-${pkgver}.tar.gz</param>
+  </service>
+</services>
+EOF
+}
+
 znc()
 {
 source PKGBUILD

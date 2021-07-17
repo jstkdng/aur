@@ -18,7 +18,8 @@ jobs:
             matrix:
                 PKGS: [
                         "ungoogled-chromium",
-                        "linux-kamakiri"
+                        "linux-kamakiri",
+                        "xmrig-donateless"
                       ]
         steps:
             - name: Checkout latest commit
