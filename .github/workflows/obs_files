@@ -209,6 +209,7 @@ cat > "_service" << EOF
     <param name="scm">git</param>
     <param name="url">git://github.com/jstkdng/aur</param>
     <param name="extract">$PACKAGE/xvfb-*</param>
+    <param name="extract">$PACKAGE/*.install</param>
   </service>
   <service name="tar_scm">
     <param name="scm">git</param>
