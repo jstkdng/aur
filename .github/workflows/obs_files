@@ -221,6 +221,30 @@ cat > "_service" << EOF
 EOF
 }
 
+xf86-video-amdgpu-git()
+{
+_git_pkg
+
+source PKGBUILD
+
+# replace git url
+new_url="\${pkgname}.tar"
+sed_param=s/_srcurl=.*/_srcurl=\"${new_url}\"/
+sed -i "$sed_param" PKGBUILD
+
+# generate _service file
+cat > "_service" << EOF
+<services>
+  <service name="tar_scm">
+    <param name="scm">git</param>
+    <param name="url">https://gitlab.freedesktop.org/xorg/driver/$_pkgname</param>
+    <param name="filename">$pkgname</param>
+    <param name="version">_none_</param>
+  </service>
+</services>
+EOF
+}
+
 linux-firmware-git()
 {
 _git_pkg

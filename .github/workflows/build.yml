@@ -22,7 +22,8 @@ jobs:
                         "xmrig-donateless",
                         "xorgproto-git",
                         "xorg-server-git",
-                        "linux-firmware-git"
+                        "linux-firmware-git",
+                        "xf86-video-amdgpu-git"
                       ]
         steps:
             - name: Checkout latest commit
