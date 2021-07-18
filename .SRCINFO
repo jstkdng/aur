@@ -6,7 +6,7 @@ pkgbase = xf86-video-amdgpu-git
 	arch = x86_64
 	groups = xorg-drivers
 	license = custom
-	makedepends = xorg-server-devel
+	makedepends = xorg-server-devel-git
 	makedepends = systemd
 	makedepends = git
 	makedepends = pixman
@@ -19,4 +19,3 @@ pkgbase = xf86-video-amdgpu-git
 	sha256sums = SKIP
 
 pkgname = xf86-video-amdgpu-git
-

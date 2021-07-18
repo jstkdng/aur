@@ -10,11 +10,12 @@ arch=('x86_64')
 url="https://xorg.freedesktop.org/"
 license=('custom')
 depends=('systemd-libs' 'mesa')
-makedepends=('xorg-server-devel' 'systemd' 'git' 'pixman')
+makedepends=('xorg-server-devel-git' 'systemd' 'git' 'pixman')
 conflicts=('xf86-video-amdgpu' 'xorg-server<1.20.0')
 provides=('xf86-video-amdgpu')
 groups=('xorg-drivers')
-source=("${pkgname}::git+https://gitlab.freedesktop.org/xorg/driver/${_pkgname}.git")
+_srcurl="${pkgname}::git+https://gitlab.freedesktop.org/xorg/driver/${_pkgname}.git"
+source=($_srcurl)
 sha256sums=('SKIP')
 pkgver() {
   local version count
