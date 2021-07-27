@@ -20,8 +20,7 @@ jobs:
             matrix:
                 PKGS: [
                         "xorgproto-git",
-                        "linux-firmware-git",
-                        "xf86-video-amdgpu-git"
+                        "linux-firmware-git"
                       ]
         steps:
             - name: Checkout latest commit
