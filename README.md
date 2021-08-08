@@ -3,24 +3,28 @@ AUR packages I maintain and co-maintain
 
 # Downloads
 
-I'm using the OpenSUSE Build Service to build binaries for these packages. You can download them
-from the OBS itself or from a mirror of the OBS I maintain. You could also configure a repository
-on your `/etc/pacman.conf` to keep everything updated.
+I'm using the OpenSUSE Build Service to build binaries for these packages. You can download the built
+binary directly or set up a repository for all my packages to be able to auto update. Both
+options are available [here](https://software.opensuse.org//download.html?project=home%3Ajustkidding%3Aarch&package=ungoogled-chromium).
 
-First, add my public key to pacman's key database.
+## OBS Repository
 
-```bash
-$ sudo pacman-key -r 3DEA62513C8035383A245A12E5786B42E8E5D565
-$ sudo pacman-key --lsign-key 3DEA62513C8035383A245A12E5786B42E8E5D565
-```
-
-Then, add these lines to the end of your `/etc/pacman.conf` file
+Add this line to your /etc/pacman.conf
 
 ```
-[jk-aur]
-Server = https://repo.vin.ovh/arch/$arch
+[home_justkidding_arch_Arch]
+Server = https://download.opensuse.org/repositories/home:/justkidding:/arch/Arch/$arch
 ```
 
-Finally, update pacman's repository database: `sudo pacman -Sy`
+Then execute this commands as root
 
-*TODO: Add configuration for OBS's repository*
+```
+key=$(curl -fsSL https://download.opensuse.org/repositories/home:justkidding:arch/Arch/$(uname -m)/home_justkidding_arch_Arch.key)
+fingerprint=$(gpg --quiet --with-colons --import-options show-only --import --fingerprint <<< "${key}" | awk -F: '$1 == "fpr" { print $10 }')
+
+pacman-key --init
+pacman-key --add - <<< "${key}"
+pacman-key --lsign-key "${fingerprint}"
+
+pacman -Sy home_justkidding_arch_Arch/ungoogled-chromium
+```
