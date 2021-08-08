@@ -51,8 +51,8 @@ cat > "_service" << EOF
   <service name="download_url">
     <param name="protocol">https</param>
     <param name="host">commondatastorage.googleapis.com</param>
-    <param name="path">/chromium-browser-official/chromium-$_pkgver.tar.xz</param>
-    <param name="filename">chromium-$_pkgver.tar.xz</param>
+    <param name="path">/chromium-browser-official/chromium-$pkgver.tar.xz</param>
+    <param name="filename">chromium-$pkgver.tar.xz</param>
   </service>
   <service name="download_url">
     <param name="protocol">https</param>
@@ -63,8 +63,8 @@ cat > "_service" << EOF
   <service name="download_url">
     <param name="protocol">https</param>
     <param name="host">github.com</param>
-    <param name="path">/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz</param>
-    <param name="filename">ungoogled-chromium-$_uc_ver.tar.gz</param>
+    <param name="path">/Eloston/ungoogled-chromium/archive/$pkgver-1.tar.gz</param>
+    <param name="filename">ungoogled-chromium-$pkgver-1.tar.gz</param>
   </service>
   <service name="download_url">
     <param name="protocol">https</param>
@@ -123,17 +123,6 @@ cat > "_service" << EOF
   </service>
 </services>
 EOF
-}
-
-ungoogled-chromium-git()
-{
-    _git_pkg
-    ungoogled-chromium
-
-    # replace ungoogled chromium url
-    new_url="\$_pkgname-\$_uc_ver.tar.gz"
-    sed_param=s/_uc_url=.*/_uc_url=\"${new_url}\"/
-    sed -i "$sed_param" PKGBUILD
 }
 
 xorgproto-git()
