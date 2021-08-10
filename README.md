@@ -27,4 +27,4 @@ pacman-key --add - <<< "${key}"
 pacman-key --lsign-key "${fingerprint}"
 ```
 
-After this you should be able to maintain any packages I maintain.
+After this you should be able to install any packages I maintain.
