@@ -5,7 +5,7 @@ AUR packages I maintain and co-maintain
 
 I'm using the OpenSUSE Build Service to build binaries for these packages. You can download the built
 binary directly or set up a repository for all my packages to be able to auto update. Both
-options are available [here](https://software.opensuse.org//download.html?project=home%3Ajustkidding%3Aarch&package=ungoogled-chromium).
+options are available [here](https://software.opensuse.org//download.html?project=home%3Ajustkidding%3Aarch&package=ungoogled-chromium). (ungoogled-chromium example)
 
 ## OBS Repository
 
@@ -25,6 +25,6 @@ fingerprint=$(gpg --quiet --with-colons --import-options show-only --import --fi
 pacman-key --init
 pacman-key --add - <<< "${key}"
 pacman-key --lsign-key "${fingerprint}"
-
-pacman -Sy home_justkidding_arch_Arch/ungoogled-chromium
 ```
+
+After this you should be able to install any packages I maintain.
