@@ -17,7 +17,7 @@ pacman-key --init
 pacman-key --add - <<< "${key}"
 pacman-key --lsign-key "${fingerprint}"
 
-pacman -Syu --noconfirm wget jre-openjdk-headless
+pacman -Syu --noconfirm wget jre-openjdk-headless jack2
 
 cd "$PACKAGE"
 
