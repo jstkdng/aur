@@ -27,6 +27,26 @@ cat > "_constraints" << EOF
 EOF
 }
 
+mongodb()
+{
+	source PKGBUILD
+
+cat > "_service" << EOF
+<services>
+  <service name="obs_scm">
+    <param name="scm">git</param>
+    <param name="url">git://github.com/jstkdng/aur</param>
+    <param name="extract">$PACKAGE/$PACKAGE.*</param>
+  </service>
+  <service name="download_url">
+    <param name="protocol">http</param>
+    <param name="host">downloads.mongodb.org</param>
+    <param name="path">/src/mongodb-src-r${pkgver}.tar.gz</param>
+  </service>
+</services>
+EOF
+}
+
 ungoogled-chromium()
 {
 
@@ -81,6 +101,7 @@ cat > "_service" << EOF
 </services>
 EOF
 
+_gen_constraints
 }
 
 xmrig-donateless()
@@ -102,6 +123,8 @@ cat > "_service" << EOF
   </service>
 </services>
 EOF
+
+_gen_constraints
 }
 
 znc()
@@ -123,6 +146,8 @@ cat > "_service" << EOF
   </service>
 </services>
 EOF
+
+_gen_constraints
 }
 
 xorgproto-git()
@@ -147,6 +172,8 @@ cat > "_service" << EOF
   </service>
 </services>
 EOF
+
+_gen_constraints
 }
 
 linux-amd-staging-drm-next-git()
@@ -178,6 +205,8 @@ cat > "_service" << EOF
   </service>
 </services>
 EOF
+
+_gen_constraints
 }
 
 xorg-server-git()
@@ -208,6 +237,7 @@ cat > "_service" << EOF
   </service>
 </services>
 EOF
+_gen_constraints
 }
 
 xf86-video-amdgpu-git()
@@ -232,6 +262,8 @@ cat > "_service" << EOF
   </service>
 </services>
 EOF
+
+_gen_constraints
 }
 
 linux-firmware-git()
@@ -257,6 +289,8 @@ cat > "_service" << EOF
   </service>
 </services>
 EOF
+
+_gen_constraints
 }
 
 linux-kamakiri()
@@ -286,6 +320,7 @@ cat > "_service" << EOF
   </service>
 </services>
 EOF
-}
 
 _gen_constraints
+}
+
