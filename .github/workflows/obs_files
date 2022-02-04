@@ -54,6 +54,15 @@ cat > "_constraints" << EOF
 EOF
 }
 
+python-cheetah3()
+{
+cat > "_service" << EOF
+<services>
+  <service name="download_files"/>
+</services>
+EOF
+}
+
 ungoogled-chromium()
 {
 
