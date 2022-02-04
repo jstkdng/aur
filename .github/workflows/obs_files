@@ -27,6 +27,15 @@ cat > "_constraints" << EOF
 EOF
 }
 
+_empty_constraints()
+{
+cat > "_constraints" << EOF
+<!-- vim: set ft=xml : -->
+<constraints>
+</constraints>
+EOF
+}
+
 mongodb()
 {
 	source PKGBUILD
@@ -61,6 +70,8 @@ cat > "_service" << EOF
   <service name="download_files"/>
 </services>
 EOF
+
+_empty_constraints
 }
 
 ungoogled-chromium()
