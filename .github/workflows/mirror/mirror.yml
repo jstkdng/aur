@@ -1,0 +1,42 @@
+name: Update OBS mirror
+on:
+    schedule:
+        - cron: '0 0 * * *'
+    push:
+        paths:
+            - '.github/workflows/mirror/*'
+          
+
+defaults:
+    run:
+        shell: bash
+
+jobs:
+    main-git:
+        env:
+            PACKAGE: ${{ matrix.PKGS }}
+            OBS_AUTH: ${{ secrets.OBS_AUTH }}
+            OBS_PROJECT: ${{ secrets.OBS_PROJECT }}
+        runs-on: ubuntu-latest
+        container: justkdng/archlinux:latest
+        strategy:
+            fail-fast: false
+            matrix:
+                PKGS: [
+                        "python-cheetah3",
+                        "xmrig-donateless"
+                      ]
+        steps:
+            - name: Checkout latest commit
+              uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
+            - name: Update packages
+              run: yes | pacman -Syu
+            - name: Check if package exists
+              run: .github/workflows/mirror/check-package-exists
+            - name: Check if update is required
+              run: .github/workflows/mirror/check-update-required
+            - name: Trigger OBS build
+              run: .github/workflows/obs_trigger
+
