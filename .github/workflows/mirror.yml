@@ -6,7 +6,6 @@ on:
         paths:
             - '.github/workflows/mirror/**'
             - '.github/workflows/mirror.yml'
-          
 
 defaults:
     run:
@@ -25,7 +24,9 @@ jobs:
             matrix:
                 PKGS: [
                         "python-cheetah3",
-                        "xmrig-donateless"
+                        "xmrig-donateless",
+                        "gminer-bin",
+                        "phoenixminer-bin"
                       ]
         steps:
             - name: Checkout latest commit

@@ -63,15 +63,11 @@ cat > "_constraints" << EOF
 EOF
 }
 
-python-cheetah3()
+python-stdnum()
 {
-cat > "_service" << EOF
-<services>
-  <service name="download_files"/>
-</services>
-EOF
+	python ../.github/workflows/mirror/gen-service.py
 
-_empty_constraints
+	_empty_constraints
 }
 
 ungoogled-chromium()
@@ -124,52 +120,6 @@ cat > "_service" << EOF
     <param name="url">git://github.com/jstkdng/aur</param>
     <param name="extract">$PACKAGE/chromium-drirc-disable-10bpc-color-configs.conf</param>
     <param name="extract">$PACKAGE/*.patch</param>
-  </service>
-</services>
-EOF
-
-_gen_constraints
-}
-
-xmrig-donateless()
-{
-source PKGBUILD
-
-cat > "_service" << EOF
-<services>
-  <service name="obs_scm">
-    <param name="scm">git</param>
-    <param name="url">git://github.com/jstkdng/aur</param>
-    <param name="extract">$PACKAGE/xmrig.*</param>
-  </service>
-  <service name="download_url">
-    <param name="protocol">https</param>
-    <param name="host">github.com</param>
-    <param name="path">/xmrig/xmrig/archive/v${pkgver}.tar.gz</param>
-    <param name="filename">${pkgname}-${pkgver}.tar.gz</param>
-  </service>
-</services>
-EOF
-
-_gen_constraints
-}
-
-znc()
-{
-source PKGBUILD
-
-cat > "_service" << EOF
-<services>
-  <service name="obs_scm">
-    <param name="scm">git</param>
-    <param name="url">git://github.com/jstkdng/aur</param>
-    <param name="extract">$PACKAGE/znc.*</param>
-  </service>
-  <service name="download_url">
-    <param name="protocol">https</param>
-    <param name="host">znc.in</param>
-    <param name="path">/releases/archive/$pkgname-$pkgver.tar.gz</param>
-    <param name="filename">$pkgname-$pkgver.tar.gz</param>
   </service>
 </services>
 EOF

@@ -2,7 +2,8 @@ name: Build packages
 on:
     push:
         paths-ignore:
-            - '.github/workflows/**'
+            - '.github/workflows/mirror/**'
+            - '.github/workflows/mirror.yml'
 
 defaults:
     run:
@@ -27,6 +28,7 @@ jobs:
                         "linux-firmware-git",
                         "xf86-video-amdgpu-git",
                         "mongodb",
+                        "python-stdnum"
                       ]
         steps:
             - name: Checkout latest commit
@@ -35,6 +37,8 @@ jobs:
                   fetch-depth: 0
             - name: Check changes in package
               run: .github/workflows/check_changes
+            - name: Check if package exists
+              run: .github/workflows/mirror/check-package-exists
             - name: Prepare environment
               run: .github/workflows/env
             - name: Run prepare()
