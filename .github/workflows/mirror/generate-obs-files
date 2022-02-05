@@ -4,6 +4,7 @@ if [[ ${no_changes+x} ]]; then
     exit 0
 fi
 
-pwd
-
+cd ${PACKAGE}
 # run python script
+python ../.github/workflows/mirror/gen-service.py
+cat _service
