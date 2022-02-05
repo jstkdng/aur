@@ -1,0 +1,21 @@
+#!/bin/bash
+
+shopt -s dotglob
+
+if [[ ${no_changes+x} ]]; then
+    exit 0
+fi
+
+cd "$PACKAGE"
+
+AUTH="authorization: Basic $OBS_AUTH"
+BASE_URL="https://api.opensuse.org/source/$OBS_PROJECT/$PACKAGE"
+
+for FILE in *
+do
+    URL="$BASE_URL/$FILE?rev=upload"
+    curl -XPUT -H 'Content-Type: application/octet-stream' -H "$AUTH" --data-binary "@$FILE" $URL
+done
+
+curl -XPOST -H "$AUTH" "$BASE_URL" -F "cmd=commit"
+
