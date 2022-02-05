@@ -1,7 +1,5 @@
 #!/bin/bash
 
-shopt -s dotglob
-
 if [[ ${no_changes+x} ]]; then
     exit 0
 fi
