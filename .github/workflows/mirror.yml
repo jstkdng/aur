@@ -4,7 +4,7 @@ on:
         - cron: '0 0 * * *'
     push:
         paths:
-            - '.github/workflows/mirror/*'
+            - '.github/workflows/mirror*'
           
 
 defaults:
