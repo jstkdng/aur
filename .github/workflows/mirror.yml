@@ -13,7 +13,7 @@ defaults:
         shell: bash
 
 jobs:
-    main-git:
+    mirror:
         env:
             PACKAGE: ${{ matrix.PKGS }}
             OBS_AUTH: ${{ secrets.OBS_AUTH }}
@@ -32,10 +32,12 @@ jobs:
               uses: actions/checkout@v2
               with:
                   fetch-depth: 0
-            - name: Update packages
-              run: pacman -Syu
+            - name: Update and install packages
+              run: pacman -Syu python-jinja python-srcinfo
             - name: Check if package exists
               run: .github/workflows/mirror/check-package-exists
             - name: Check if update is required
               run: .github/workflows/mirror/check-update-required
+            - name: Generate obs files
+              run: .github/workflows/mirror/generate-obs-files
 

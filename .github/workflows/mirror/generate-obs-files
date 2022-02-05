@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ ${no_changes+x} ]]; then
+    exit 0
+fi
+
+pwd
+
+# run python script
