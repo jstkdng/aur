@@ -3,4 +3,21 @@
 AUTH="authorization: Basic $OBS_AUTH"
 BASE_URL="https://api.opensuse.org/source/$OBS_PROJECT/$PACKAGE"
 
-curl -H "$AUTH" "$BASE_URL/_meta"
+curl -H "$AUTH" "$BASE_URL/_meta" | grep -q "Package not found"
+
+# if string is not found, package exists
+if [[ $? -eq 1 ]]; then
+	exit 0
+fi
+
+# create package
+cat > "_meta" << EOF
+<package name="${PACKAGE}" project="${OBS_PROJECT}">
+  <title/>
+  <description/>
+</package>
+EOF
+
+curl -H "$AUTH" -X PUT -T _meta "$BASE_URL/_meta"
+
+rm _meta
