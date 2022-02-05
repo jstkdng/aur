@@ -32,7 +32,7 @@ jobs:
               with:
                   fetch-depth: 0
             - name: Update packages
-              run: yes | pacman -Syu
+              run: pacman -Syu
             - name: Check if package exists
               run: .github/workflows/mirror/check-package-exists
             - name: Check if update is required
