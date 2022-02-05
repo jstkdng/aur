@@ -6,8 +6,6 @@ fi
 
 cd ${PACKAGE}
 
-mv .SRCINFO SRCINFO
-
 # generate _service file
 python ../.github/workflows/mirror/gen-service.py
 
@@ -16,4 +14,6 @@ cat > "_constraints" << EOF
 <constraints>
 </constraints>
 EOF
+
+mv .SRCINFO SRCINFO
 
