@@ -22,13 +22,11 @@ jobs:
                 PKGS: [
                         "ungoogled-chromium",
                         "linux-kamakiri",
-                        "xmrig-donateless",
                         "xorgproto-git",
                         "xorg-server-git",
                         "linux-firmware-git",
                         "xf86-video-amdgpu-git",
                         "mongodb",
-                        "python-cheetah3"
                       ]
         steps:
             - name: Checkout latest commit

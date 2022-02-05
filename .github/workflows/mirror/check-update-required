@@ -1,0 +1,15 @@
+#!/bin/bash
+
+AUTH="authorization: Basic $OBS_AUTH"
+BASE_URL="https://api.opensuse.org/source/$OBS_PROJECT/$PACKAGE"
+
+git clone https://aur.archlinux.org/${PACKAGE}.git
+cd ${PACKAGE}
+
+curl -H "$AUTH" "$BASE_URL/.SRCINFO" | cmp -s .SRCINFO -
+
+# exit code 0 means there's no need to update
+if [[ $? -eq 0 ]]; then
+	echo "no_changes=1" >> $GITHUB_ENV
+fi
+

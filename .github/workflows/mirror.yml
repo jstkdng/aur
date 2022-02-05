@@ -38,6 +38,4 @@ jobs:
               run: .github/workflows/mirror/check-package-exists
             - name: Check if update is required
               run: .github/workflows/mirror/check-update-required
-            - name: Trigger OBS build
-              run: .github/workflows/obs_trigger
 
