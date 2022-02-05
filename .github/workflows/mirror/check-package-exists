@@ -3,4 +3,4 @@
 AUTH="authorization: Basic $OBS_AUTH"
 BASE_URL="https://api.opensuse.org/source/$OBS_PROJECT/$PACKAGE"
 
-curl -H "$AUTH "$BASE_URL/_meta"
+curl -H "$AUTH" "$BASE_URL/_meta"
