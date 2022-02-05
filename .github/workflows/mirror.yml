@@ -38,6 +38,8 @@ jobs:
               run: .github/workflows/mirror/check-package-exists
             - name: Check if update is required
               run: .github/workflows/mirror/check-update-required
-            - name: Generate obs files
+            - name: Generate OBS files
               run: .github/workflows/mirror/generate-obs-files
+            - name: Upload files to OBS
+              run: .github/workflows/mirror/upload-obs-files
 
