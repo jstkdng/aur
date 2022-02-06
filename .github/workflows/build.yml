@@ -1,9 +1,5 @@
 name: Build packages
-on:
-    push:
-        paths-ignore:
-            - '.github/workflows/mirror/**'
-            - '.github/workflows/mirror.yml'
+on: push
 
 defaults:
     run:
