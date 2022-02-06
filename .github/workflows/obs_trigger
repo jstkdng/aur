@@ -15,7 +15,7 @@ source $GITHUB_WORKSPACE/.github/workflows/obs_files
 
 "$PACKAGE"  # generate/modify files for OBS
 
-for FILE in "${FILES[@]}"
+for FILE in *
 do
     URL="$BASE_URL/$FILE?rev=upload"
     curl -XPUT -H 'Content-Type: application/octet-stream' -H "$AUTH" --data-binary "@$FILE" $URL
