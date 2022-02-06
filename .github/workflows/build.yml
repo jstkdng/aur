@@ -1,5 +1,8 @@
 name: Build packages
-on: push
+on:
+    push:
+        paths-ignore:
+            - '.github/workflows/**'
 
 defaults:
     run:
