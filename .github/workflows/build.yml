@@ -24,7 +24,8 @@ jobs:
                         "linux-firmware-git",
                         "xf86-video-amdgpu-git",
                         "mongodb",
-                        "python-stdnum"
+                        "python-stdnum",
+                        "libstdc++5"
                       ]
         steps:
             - name: Checkout latest commit

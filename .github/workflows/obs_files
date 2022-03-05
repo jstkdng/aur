@@ -59,6 +59,13 @@ python-stdnum()
 	_empty_constraints
 }
 
+libstdc++5()
+{
+	python ../.github/workflows/mirror/gen-service.py
+
+	_empty_constraints
+}
+
 ungoogled-chromium()
 {
 
