@@ -112,7 +112,7 @@ cat > "_service" << EOF
 </services>
 EOF
 
-_gen_constraints
+_empty_constraints
 }
 
 linux-amd-staging-drm-next-git()

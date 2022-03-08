@@ -3,7 +3,7 @@ from srcinfo.parse import parse_srcinfo
 from urllib.parse import urlparse
 from jinja2 import Environment, FileSystemLoader, BaseLoader
 
-TEMPLATE_STR = """
+TEMPLATE_STR = """<!-- vim: set ft=xml: -->
 <services>
 {%- for source in sources %}
     <service name="download_url">
@@ -13,7 +13,14 @@ TEMPLATE_STR = """
         <param name="filename">{{ source.filename }}</param>
     </service>
 {%- endfor %}
+    <service name="obs_scm">
+        <param name="scm">git</param>
+        <param name="url">git://github.com/jstkdng/aur</param>
+        <param name="subdir">{{ pkg }}</param>
+        <param name="extract">[!PKGBUILD]*</param>
+    </service>
 </services>
+
 
 """
 
@@ -47,7 +54,7 @@ def main():
 
             sources.append(src_obj)
     template = Environment(loader=BaseLoader()).from_string(TEMPLATE_STR)
-    output = template.render(sources=sources)
+    output = template.render(sources=sources, pkg=os.getenv("PACKAGE"))
 
     with open("_service", "w") as f:
         f.write(output)
