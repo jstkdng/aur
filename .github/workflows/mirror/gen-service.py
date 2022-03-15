@@ -2,6 +2,7 @@ import os
 from srcinfo.parse import parse_srcinfo
 from urllib.parse import urlparse
 from jinja2 import Environment, FileSystemLoader, BaseLoader
+from pathlib import Path
 
 TEMPLATE_STR = """<!-- vim: set ft=xml: -->
 <services>
@@ -13,12 +14,14 @@ TEMPLATE_STR = """<!-- vim: set ft=xml: -->
         <param name="filename">{{ source.filename }}</param>
     </service>
 {%- endfor %}
+{%- if pkg|length %}
     <service name="obs_scm">
         <param name="scm">git</param>
         <param name="url">git://github.com/jstkdng/aur</param>
         <param name="subdir">{{ pkg }}</param>
         <param name="extract">[!PKGBUILD]*</param>
     </service>
+{%- endif %}
 </services>
 
 
@@ -54,7 +57,18 @@ def main():
 
             sources.append(src_obj)
     template = Environment(loader=BaseLoader()).from_string(TEMPLATE_STR)
-    output = template.render(sources=sources, pkg=os.getenv("PACKAGE"))
+    cwd = Path.cwd()
+    files = [x for x in cwd.iterdir()]
+    empty_dir = True
+    ignore = ['PKGBUILD', '.SRCINFO', '.gitignore', '_constraints', '_service']
+    for file in files:
+        if file.stem not in ignore:
+            empty_dir = False
+            break
+    pkg = ""
+    if not empty_dir:
+        pkg = os.getenv('PACKAGE')
+    output = template.render(sources=sources, pkg=pkg)
 
     with open("_service", "w") as f:
         f.write(output)
