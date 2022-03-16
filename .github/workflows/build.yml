@@ -25,21 +25,22 @@ jobs:
                         "xf86-video-amdgpu-git",
                         "mongodb",
                         "python-stdnum",
-                        "libstdc++5"
+                        "libstdc++5",
+                        "gminer-bin"
                       ]
         steps:
             - name: Checkout latest commit
               uses: actions/checkout@v2
               with:
                   fetch-depth: 0
-                #- name: Check changes in package
-                #run: .github/workflows/check_changes
-                #- name: Check if package exists
-                #run: .github/workflows/mirror/check-package-exists
+                    #- name: Check changes in package
+                    #run: .github/workflows/check_changes
+            - name: Check if package exists
+              run: .github/workflows/mirror/check-package-exists
             - name: Prepare environment
               run: .github/workflows/env
-                #- name: Run prepare()
-                #run: sudo -u build -EH bash -c .github/workflows/prepare
+            - name: Run prepare()
+              run: sudo -u build -EH bash -c .github/workflows/prepare
             - name: Trigger OBS build
               run: .github/workflows/obs_trigger
 

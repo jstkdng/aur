@@ -25,7 +25,6 @@ jobs:
                 PKGS: [
                         "python-cheetah3",
                         "xmrig-donateless",
-                        "gminer-bin",
                         "phoenixminer-bin"
                       ]
         steps:

@@ -16,10 +16,6 @@ BASE_URL="https://api.opensuse.org/source/$OBS_PROJECT/$PACKAGE"
 
 "$PACKAGE"  # generate/modify files for OBS
 
-cat _service
-cat _constraints
-exit 0
-
 for FILE in $FILES
 do
     URL="$BASE_URL/$FILE?rev=upload"

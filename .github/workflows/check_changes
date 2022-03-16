@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#git diff --name-only HEAD~1..HEAD | egrep -q "\<${PACKAGE}\>([^-]|$)"
 git diff --name-only HEAD~1..HEAD | fgrep -q "${PACKAGE}"
 
 RET=$?
