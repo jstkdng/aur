@@ -162,6 +162,12 @@ cat > "_service" << EOF
     <param name="filename">$_pkgbase</param>
     <param name="version">_none_</param>
   </service>
+  <service name="obs_scm">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/jstkdng/aur</param>
+    <param name="subdir">$PACKAGE</param>
+    <param name="extract">[!PKGBUILD]*</param>
+  </service>
 </services>
 EOF
 _gen_constraints
