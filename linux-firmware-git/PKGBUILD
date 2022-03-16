@@ -48,7 +48,7 @@ pkgver() {
   # Commit date + short rev
   echo $(TZ=UTC git show -s --pretty=%cd --date=format-local:%Y%m%d HEAD).$(git rev-parse --short HEAD)
 }
-
+ 
 build() {
   mkdir -p kernel/x86/microcode
   cat ${pkgbase}/amd-ucode/microcode_amd*.bin > kernel/x86/microcode/AuthenticAMD.bin
