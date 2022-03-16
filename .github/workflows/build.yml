@@ -18,7 +18,6 @@ jobs:
             matrix:
                 PKGS: [
                         "ungoogled-chromium",
-                        "linux-kamakiri",
                         "xorgproto-git",
                         "xorg-server-git",
                         "linux-firmware-git",
@@ -26,7 +25,8 @@ jobs:
                         "mongodb",
                         "python-stdnum",
                         "libstdc++5",
-                        "gminer-bin"
+                        "gminer-bin",
+                        "phoenixminer-bin"
                       ]
         steps:
             - name: Checkout latest commit
