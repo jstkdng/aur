@@ -131,7 +131,7 @@ cat > "_service" << EOF
 <services>
   <service name="tar_scm">
     <param name="scm">git</param>
-    <param name="url">git://people.freedesktop.org/~agd5f/linux</param>
+    <param name="url">https://people.freedesktop.org/~agd5f/linux</param>
     <param name="revision">amd-staging-drm-next</param>
     <param name="filename">linux-agd5f</param>
     <param name="version">_none_</param>
@@ -216,7 +216,7 @@ cat > "_service" << EOF
   </service>
   <service name="obs_scm">
     <param name="scm">git</param>
-    <param name="url">git://github.com/jstkdng/aur</param>
+    <param name="url">https://github.com/jstkdng/aur</param>
     <param name="subdir">$pkgbase</param>
     <param name="extract">[!PKGBUILD]*</param>
   </service>

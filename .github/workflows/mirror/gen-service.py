@@ -17,7 +17,7 @@ TEMPLATE_STR = """<!-- vim: set ft=xml: -->
 {%- if pkg|length %}
     <service name="obs_scm">
         <param name="scm">git</param>
-        <param name="url">git://github.com/jstkdng/aur</param>
+        <param name="url">https://github.com/jstkdng/aur</param>
         <param name="subdir">{{ pkg }}</param>
         <param name="extract">[!PKGBUILD]*</param>
     </service>
