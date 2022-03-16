@@ -24,8 +24,7 @@ jobs:
             matrix:
                 PKGS: [
                         "python-cheetah3",
-                        "xmrig-donateless",
-                        "phoenixminer-bin"
+                        "xmrig-donateless"
                       ]
         steps:
             - name: Checkout latest commit

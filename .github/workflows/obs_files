@@ -66,6 +66,13 @@ libstdc++5()
 	_empty_constraints
 }
 
+phoenixminer-bin()
+{
+	python ../.github/workflows/mirror/gen-service.py
+
+	_empty_constraints
+}
+
 ungoogled-chromium()
 {
 
