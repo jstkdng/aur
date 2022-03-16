@@ -1,8 +1,10 @@
 #!/bin/bash
 
 if [[ ${no_changes+x} ]]; then
-    exit 0
+    #exit 0
 fi
+
+source .github/workflows/obs_files
 
 cd "$PACKAGE"
 
@@ -11,9 +13,12 @@ declare -a FILES=(PKGBUILD _service _constraints)
 AUTH="authorization: Basic $OBS_AUTH"
 BASE_URL="https://api.opensuse.org/source/$OBS_PROJECT/$PACKAGE"
 
-source $GITHUB_WORKSPACE/.github/workflows/obs_files
 
 "$PACKAGE"  # generate/modify files for OBS
+
+cat _service
+cat _constraints
+exit 0
 
 for FILE in $FILES
 do
