@@ -13,13 +13,14 @@ declare -a FILES=(PKGBUILD _service _constraints)
 AUTH="authorization: Basic $OBS_AUTH"
 BASE_URL="https://api.opensuse.org/source/$OBS_PROJECT/$PACKAGE"
 
-
 "$PACKAGE"  # generate/modify files for OBS
 
 for FILE in $FILES
 do
+	echo $FILE
+	cat $FILE
     URL="$BASE_URL/$FILE?rev=upload"
-    curl -XPUT -H 'Content-Type: application/octet-stream' -H "$AUTH" --data-binary "@$FILE" $URL
+    #curl -XPUT -H 'Content-Type: application/octet-stream' -H "$AUTH" --data-binary "@$FILE" $URL
 done
 
 curl -XPOST -H "$AUTH" "$BASE_URL" -F "cmd=commit"
