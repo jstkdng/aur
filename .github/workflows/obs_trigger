@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [[ ${no_changes+x} ]]; then
+#if [[ ${no_changes+x} ]]; then
     #exit 0
-fi
+#fi
 
 source .github/workflows/obs_files
 
