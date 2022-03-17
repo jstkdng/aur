@@ -65,7 +65,7 @@ def main():
 
     # package information
     pkg = {
-        "name": os.getenv('PACKAGE')
+        "name": os.getenv('PACKAGE'),
         "only_pkgbuild": True,
         "mirror": False
     }
