@@ -21,3 +21,5 @@ EOF
 curl -H "$AUTH" -X PUT -T _meta "$BASE_URL/_meta"
 
 rm _meta
+
+echo "new_pkg=1" >> $GITHUB_ENV

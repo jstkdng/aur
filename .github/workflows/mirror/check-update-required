@@ -1,12 +1,19 @@
 #!/bin/bash
 
 AUTH="authorization: Basic $OBS_AUTH"
-BASE_URL="https://api.opensuse.org/source/$OBS_PROJECT/$PACKAGE"
+BASE_URL="https://build.opensuse.org/source/$OBS_PROJECT/$PACKAGE/_service:obs_scm"
 
 git clone https://aur.archlinux.org/${PACKAGE}.git
+
+# if it's new package can't do verification
+if [[ ${new_pkg+x} ]]; then
+    exit 0
+fi
+
 cd ${PACKAGE}
 
-curl -H "$AUTH" "$BASE_URL/SRCINFO" | cmp -s .SRCINFO -
+curl -H "$AUTH" "$BASE_URL:PKGBUILD" -o PKGBUILD.old
+makepkg -p PKGBUILD.old --printsrcinfo | cmp -s .SRCINFO -
 
 # exit code 0 means there's no need to update
 if [[ $? -eq 0 ]]; then

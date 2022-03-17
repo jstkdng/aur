@@ -17,6 +17,7 @@ jobs:
             PACKAGE: ${{ matrix.PKGS }}
             OBS_AUTH: ${{ secrets.OBS_AUTH }}
             OBS_PROJECT: ${{ secrets.OBS_PROJECT }}
+            MIRROR: 1
         runs-on: ubuntu-latest
         container: justkdng/archlinux:latest
         strategy:

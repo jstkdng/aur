@@ -6,14 +6,12 @@ fi
 
 cd ${PACKAGE}
 
-# generate _service file
-python ../.github/workflows/mirror/gen-service.py
-
 # TODO: generate constraints programatically
 cat > "_constraints" << EOF
 <constraints>
 </constraints>
 EOF
 
-mv .SRCINFO SRCINFO
+# generate _service file
+python ../.github/workflows/mirror/gen-service.py
 

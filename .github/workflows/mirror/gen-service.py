@@ -14,11 +14,17 @@ TEMPLATE_STR = """<!-- vim: set ft=xml: -->
         <param name="filename">{{ source.filename }}</param>
     </service>
 {%- endfor %}
-{%- if pkg|length %}
+{%- if pkg.mirror %}
+    <service name="obs_scm">
+        <param name="scm">git</param>
+        <param name="url">https://aur.archlinux.org/{{ pkg.name }}</param>
+        <param name="extract">*</param>
+    </service>
+{%- elif not pkg.only_pkgbuild %}
     <service name="obs_scm">
         <param name="scm">git</param>
         <param name="url">https://github.com/jstkdng/aur</param>
-        <param name="subdir">{{ pkg }}</param>
+        <param name="subdir">{{ pkg.name }}</param>
         <param name="extract">[!PKGBUILD]*</param>
     </service>
 {%- endif %}
@@ -56,20 +62,28 @@ def main():
                 src_obj["filename"] = parsed_url.path.split('/')[-1]
 
             sources.append(src_obj)
-    template = Environment(loader=BaseLoader()).from_string(TEMPLATE_STR)
+
+    # package information
+    pkg = {
+        "name": os.getenv('PACKAGE')
+        "only_pkgbuild": True,
+        "mirror": False
+    }
+    if os.getenv('MIRROR') is not None:
+        pkg["mirror"] = True
+
     cwd = Path.cwd()
     files = [x for x in cwd.iterdir()]
     empty_dir = True
     ignore = ['PKGBUILD', '.SRCINFO', '.gitignore', '_constraints', '_service']
     for file in files:
         if file.stem not in ignore:
-            empty_dir = False
+            pkg["only_pkgbuild"] = False
             break
-    pkg = ""
-    if not empty_dir:
-        pkg = os.getenv('PACKAGE')
-    output = template.render(sources=sources, pkg=pkg)
 
+    # render template
+    template = Environment(loader=BaseLoader()).from_string(TEMPLATE_STR)
+    output = template.render(sources=sources, pkg=pkg)
     with open("_service", "w") as f:
         f.write(output)
 
