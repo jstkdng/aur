@@ -26,7 +26,8 @@ jobs:
                         "python-stdnum",
                         "libstdc++5",
                         "gminer-bin",
-                        "phoenixminer-bin"
+                        "phoenixminer-bin",
+                        "linux-kamakiri"
                       ]
         steps:
             - name: Checkout latest commit

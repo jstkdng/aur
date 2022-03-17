@@ -25,7 +25,9 @@ jobs:
             matrix:
                 PKGS: [
                         "python-cheetah3",
-                        "xmrig-donateless"
+                        "xmrig-donateless",
+                        "xmrig-mo",
+                        "teamredminer-bin"
                       ]
         steps:
             - name: Checkout latest commit
