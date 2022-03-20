@@ -28,7 +28,8 @@ jobs:
                         "gminer-bin",
                         "phoenixminer-bin",
                         "linux-kamakiri",
-                        "libgss"
+                        "libgss",
+                        "p2pool-git"
                       ]
         steps:
             - name: Checkout latest commit
