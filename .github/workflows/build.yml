@@ -27,7 +27,8 @@ jobs:
                         "libstdc++5",
                         "gminer-bin",
                         "phoenixminer-bin",
-                        "linux-kamakiri"
+                        "linux-kamakiri",
+                        "libgss"
                       ]
         steps:
             - name: Checkout latest commit
