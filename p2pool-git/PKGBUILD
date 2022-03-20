@@ -27,8 +27,6 @@ prepare() {
   git submodule init
   git submodule update
   mkdir -p build
-  # Removing libgss from build dependencies.
-  sed -i 's/gss//g' CMakeLists.txt
 }
 
 build() {
