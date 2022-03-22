@@ -21,7 +21,8 @@ jobs:
                 PKGS: [
                         "xorgproto-git",
                         "linux-firmware-git",
-                        "xorg-server-git"
+                        "xorg-server-git",
+                        "p2pool-git"
                       ]
         steps:
             - name: Checkout latest commit
