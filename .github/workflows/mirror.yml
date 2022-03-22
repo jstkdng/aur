@@ -27,7 +27,8 @@ jobs:
                         "python-cheetah3",
                         "xmrig-donateless",
                         "xmrig-mo",
-                        "teamredminer-bin"
+                        "teamredminer-bin",
+                        "qt4"
                       ]
         steps:
             - name: Checkout latest commit
