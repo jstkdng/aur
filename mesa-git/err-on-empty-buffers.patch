@@ -1,0 +1,12 @@
+index d9442f1e070..450f2062ea1 100644  
+--- a/src/mesa/main/draw.c  
++++ b/src/mesa/main/draw.c  
+@@ -427,7 +427,7 @@ static GLenum  
+ validate_draw_arrays(struct gl_context *ctx,  
+                      GLenum mode, GLsizei count, GLsizei numInstances)  
+ {  
+-   if (count < 0 || numInstances < 0)  
++   if (count <= 0 || numInstances <= 0)  
+       return GL_INVALID_VALUE;  
+ 
+    GLenum error = _mesa_valid_prim_mode(ctx, mode); ```

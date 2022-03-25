@@ -30,7 +30,8 @@ jobs:
                         "linux-kamakiri",
                         "libgss",
                         "p2pool-git",
-                        "llvm-git"
+                        "llvm-git",
+                        "mesa-git"
                       ]
         steps:
             - name: Checkout latest commit
