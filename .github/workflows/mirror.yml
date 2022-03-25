@@ -28,7 +28,8 @@ jobs:
                         "xmrig-donateless",
                         "xmrig-mo",
                         "teamredminer-bin",
-                        "qt4"
+                        "qt4",
+                        "python-sphinx-automodapi"
                       ]
         steps:
             - name: Checkout latest commit
