@@ -195,6 +195,38 @@ EOF
 _gen_constraints
 }
 
+llvm-git()
+{
+_git_pkg
+_gen_constraints
+
+source PKGBUILD
+
+# generate _service file
+cat > "_service" << EOF
+<services>
+  <service name="tar_scm">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/llvm/llvm-project.git</param>
+    <param name="filename">llvm-project</param>
+    <param name="version">_none_</param>
+  </service>
+  <service name="obs_scm">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/jstkdng/aur</param>
+    <param name="subdir">$PACKAGE</param>
+    <param name="extract">[!PKGBUILD]*</param>
+  </service>
+</services>
+EOF
+
+# add stuff to PKGBUILD
+cat >> "PKGBUILD" << EOF
+source=(llvm-project.tar
+        "llvm-config.h")
+EOF
+}
+
 xorg-server-git()
 {
 _git_pkg
