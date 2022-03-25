@@ -17,10 +17,10 @@ pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
-              'ocl-icd' 'wayland-protocols' 'meson' 'ninja' 'glslang')
+              'ocl-icd' 'wayland-protocols' 'meson' 'ninja' 'glslang' 'llvm-git')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'expat')
-optdepends=('opengl-man-pages: for the OpenGL API man pages')
+         'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'expat' 'llvm-libs-git')
+optdepends=('opengl-man-pages: for the OpenGL API man pages' 'llvm-git: opencl')
 provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-swrast' 'vulkan-driver' 'mesa-libgl' 'opengl-driver' 'opencl-driver')
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-swrast' 'mesa-libgl')
 url="https://www.mesa3d.org"
@@ -48,38 +48,6 @@ sha512sums=('SKIP'
 # 3: llvm-git from LordHeavy unofficial repo 
 # 4  llvm (stable from extra) Default value
 # 
-
-if [[ ! $MESA_WHICH_LLVM ]] ; then
-    MESA_WHICH_LLVM=2
-fi
-
-case $MESA_WHICH_LLVM in
-    1)
-        # aur llvm-minimal-git
-        makedepends+=('llvm-minimal-git')
-        depends+=('llvm-libs-minimal-git')
-        ;;
-    2)
-        # aur llvm-git
-        # depending on aur-llvm-* to avoid mixup with LH llvm-git
-        makedepends+=('aur-llvm-git')
-        depends+=('aur-llvm-libs-git')
-        optdepends+=('aur-llvm-git: opencl')
-        ;;
-    3)
-        # mesa-git/llvm-git (lordheavy unofficial repo)
-        makedepends+=('llvm-git' 'clang-git')
-        depends+=('llvm-libs-git')
-        optdepends+=('clang-git: opencl' 'compiler-rt: opencl')
-        ;;
-    4)
-        # extra/llvm
-        makedepends+=(llvm=13.0.1 clang=13.0.1)
-        depends+=(llvm-libs=13.0.1)
-        optdepends+=('clang: opencl' 'compiler-rt: opencl')
-        ;;
-    *)
-esac
 
 pkgver() {
     cd mesa
