@@ -73,6 +73,13 @@ phoenixminer-bin()
 	_empty_constraints
 }
 
+gminer-bin()
+{
+	python ../.github/workflows/mirror/gen-service.py
+
+	_empty_constraints
+}
+
 libgss()
 {
 	python ../.github/workflows/mirror/gen-service.py
