@@ -15,8 +15,7 @@ makedepends=('xorg-server-devel-git' 'systemd' 'git' 'pixman')
 conflicts=('xf86-video-amdgpu' 'xorg-server<1.20.0')
 provides=('xf86-video-amdgpu')
 groups=('xorg-drivers')
-_srcurl="${pkgname}::git+https://gitlab.freedesktop.org/xorg/driver/${_pkgname}.git"
-source=($_srcurl)
+source=("${pkgname}::git+https://gitlab.freedesktop.org/xorg/driver/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
