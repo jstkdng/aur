@@ -22,7 +22,8 @@ jobs:
                         "xorgproto-git",
                         "linux-firmware-git",
                         "xorg-server-git",
-                        "p2pool-git"
+                        "p2pool-git",
+                        "xf86-video-amdgpu-git"
                       ]
         steps:
             - name: Checkout latest commit
