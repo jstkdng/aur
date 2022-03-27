@@ -13,13 +13,13 @@ Add this line to your /etc/pacman.conf
 
 ```
 [home_justkidding_arch_Arch]
-Server = https://download.opensuse.org/repositories/home:/justkidding:/arch/Arch/$arch
+Server = https://downloadcontent.opensuse.org/repositories/home:/justkidding:/arch/Arch/$arch
 ```
 
 Then execute this commands as root
 
 ```
-key=$(curl -fsSL https://download.opensuse.org/repositories/home:justkidding:arch/Arch/$(uname -m)/home_justkidding_arch_Arch.key)
+key=$(curl -fsSL https://downloadcontent.opensuse.org/repositories/home:justkidding:arch/Arch/$(uname -m)/home_justkidding_arch_Arch.key)
 fingerprint=$(gpg --quiet --with-colons --import-options show-only --import --fingerprint <<< "${key}" | awk -F: '$1 == "fpr" { print $10 }')
 
 pacman-key --init
@@ -28,3 +28,4 @@ pacman-key --lsign-key "${fingerprint}"
 ```
 
 After this you should be able to install any packages I maintain.
+
