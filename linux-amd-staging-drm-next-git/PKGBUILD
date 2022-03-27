@@ -1,12 +1,17 @@
 # Maintainer: Yurii Kolesykov <root@yurikoles.com>
 # based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
+
+
+
+
+
 pkgbase=linux-amd-staging-drm-next-git
-pkgdesc='Linux kernel with AMDGPU WIP patches'
-pkgver=5.13.r1018615.be0118f90e18
 _product="${pkgbase%-git}"
 _branch="${_product#linux-}"
+pkgver=5.13.r1018615.be0118f90e18
 pkgrel=1
+pkgdesc='Linux kernel with AMDGPU WIP patches'
 arch=(x86_64)
 url=https://gitlab.freedesktop.org/agd5f/linux
 license=(GPL2)
@@ -56,7 +61,6 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
-  diff -u ../config .config || :
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
@@ -109,11 +113,11 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
@@ -196,12 +200,14 @@ _package-docs() {
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-pkgname=("${_product}-git" "${_product}-headers-git" "${_product}-docs-git")
-for _package in "${pkgname[@]}"; do
-  local _package_no_git="${_package%-git}"
-  local _package_stripped="${_package_no_git#$_product}"
-  eval "package_${_package}() {
-  $(declare -f "_package${_package_stripped}")
-  _package${_package_stripped}
-}"
+pkgname=("linux-amd-staging-drm-next-git"
+         "linux-amd-staging-drm-next-headers-git"
+         "linux-amd-staging-drm-next-docs-git")
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
+  }"
 done
+
+# vim:set ts=8 sts=2 sw=2 et:
