@@ -353,6 +353,42 @@ EOF
 _empty_constraints
 }
 
+linux-amd-staging-drm-next-git()
+{
+_git_pkg
+_gen_constraints
+
+source PKGBUILD
+
+# generate _service file
+cat > "_service" << EOF
+<services>
+  <service name="tar_scm">
+    <param name="scm">git</param>
+    <param name="url">https://gitlab.freedesktop.org/agd5f/linux.git</param>
+    <param name="filename">$_srcname</param>
+    <param name="revision">$_branch</param>
+    <param name="version">_none_</param>
+  </service>
+  <service name="obs_scm">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/jstkdng/aur</param>
+    <param name="subdir">$PACKAGE</param>
+    <param name="extract">[!PKGBUILD]*</param>
+  </service>
+</services>
+EOF
+
+# add stuff to PKGBUILD
+cat >> "PKGBUILD" << EOF
+source=(
+  "${_srcname}.tar"
+  config         # the main kernel config file
+)
+EOF
+
+}
+
 linux-kamakiri()
 {
 source PKGBUILD

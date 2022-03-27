@@ -31,7 +31,8 @@ jobs:
                         "libgss",
                         "p2pool-git",
                         "llvm-git",
-                        "mesa-git"
+                        "mesa-git",
+                        "linux-amd-staging-drm-next-git"
                       ]
         steps:
             - name: Checkout latest commit
