@@ -168,33 +168,6 @@ source=("$_pkgname.tar")
 EOF
 }
 
-linux-amd-staging-drm-next-git()
-{
-_git_pkg
-
-source PKGBUILD
-
-# replace git url
-new_url="\${_srcname}.tar"
-sed_param=s/_srcurl=.*/_srcurl=\"${new_url}\"/
-sed -i "$sed_param" PKGBUILD
-
-# generate _service file
-cat > "_service" << EOF
-<services>
-  <service name="tar_scm">
-    <param name="scm">git</param>
-    <param name="url">https://people.freedesktop.org/~agd5f/linux</param>
-    <param name="revision">amd-staging-drm-next</param>
-    <param name="filename">linux-agd5f</param>
-    <param name="version">_none_</param>
-  </service>
-</services>
-EOF
-
-_gen_constraints
-}
-
 mesa-git()
 {
 _git_pkg

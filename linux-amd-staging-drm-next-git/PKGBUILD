@@ -1,12 +1,13 @@
 # Maintainer: Yurii Kolesykov <root@yurikoles.com>
 # based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-
-
-
-
-
 pkgbase=linux-amd-staging-drm-next-git
+pkgname=(
+  "linux-amd-staging-drm-next-git"
+  "linux-amd-staging-drm-next-headers-git"
+  "linux-amd-staging-drm-next-docs-git"
+)
+
 _product="${pkgbase%-git}"
 _branch="${_product#linux-}"
 pkgver=5.13.r1018615.be0118f90e18
@@ -200,14 +201,14 @@ _package-docs() {
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-pkgname=("linux-amd-staging-drm-next-git"
-         "linux-amd-staging-drm-next-headers-git"
-         "linux-amd-staging-drm-next-docs-git")
-for _p in "${pkgname[@]}"; do
-  eval "package_$_p() {
-    $(declare -f "_package${_p#$pkgbase}")
-    _package${_p#$pkgbase}
-  }"
+
+for _package in "${pkgname[@]}"; do
+  local _package_no_git="${_package%-git}"
+  local _package_stripped="${_package_no_git#$_product}"
+  eval "package_${_package}() {
+  $(declare -f "_package${_package_stripped}")
+  _package${_package_stripped}
+}"
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
