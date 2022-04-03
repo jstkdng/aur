@@ -198,7 +198,7 @@ EOF
 cat >> "PKGBUILD" << EOF
 source=(mesa.tar
         'LICENSE'
-		'err-on-empty-buffers.patch')
+		'skip_0_instance.patch')
 EOF
 }
 
