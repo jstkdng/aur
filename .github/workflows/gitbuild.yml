@@ -23,7 +23,8 @@ jobs:
                         "linux-firmware-git",
                         "xorg-server-git",
                         "p2pool-git",
-                        "xf86-video-amdgpu-git"
+                        "xf86-video-amdgpu-git",
+                        "mesa-git"
                       ]
         steps:
             - name: Checkout latest commit
