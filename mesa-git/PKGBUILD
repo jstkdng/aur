@@ -27,13 +27,13 @@ url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
         'LICENSE'
-        'skip_0_instance.patch')
+        'skip_0_count_draws.patch')
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
-         'b1b45cfaf7f83d14e71116de7eb54097')
+         'b107d5d230a6978419c33e309f21938b')
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            'fc33ad82c1a19baa431b6eec00e478544eaa0a0ceda925ee9aca696e75ed627a1a8a06fc8c03d7afa85e6d40da712bc8e1e4747057fe10eff3b3c378a969323f')
+            '2db54f05dcb6ca7f30baa11e1e4a7b8882d28a362b82064fe21a9128702f0efb46159c16b4ae15f6626797d4636b06c9377df956820cf970d6afd0e2493238a7')
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
