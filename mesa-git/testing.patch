@@ -1,0 +1,13 @@
+diff --git a/src/gallium/drivers/radeonsi/si_state_draw.cpp b/src/gallium/drivers/radeonsi/si_state_draw.cpp
+index ce1836a..d9aac26 100644
+--- a/src/gallium/drivers/radeonsi/si_state_draw.cpp
++++ b/src/gallium/drivers/radeonsi/si_state_draw.cpp
+@@ -1610,7 +1610,7 @@ static void si_emit_draw_packets(struct si_context *sctx, const struct pipe_draw
+                   sctx->last_base_vertex = draws[num_draws - 1].index_bias;
+             } else {
+                /* DrawID and BaseVertex are constant. */
+-               if (GFX_VERSION == GFX10) {
++               if (GFX_VERSION >= GFX10) {
+                   /* GFX10 has a bug that consecutive draw packets with NOT_EOP must not have
+                    * count == 0 in the last draw (which doesn't set NOT_EOP).
+                    *
