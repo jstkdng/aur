@@ -1,7 +1,9 @@
 #!/bin/bash
 
 pwd
-ls -lh
+ls -alh
+whoami
+stat .git
 
 git diff --name-only HEAD~1..HEAD | fgrep -q "${PACKAGE}"
 
