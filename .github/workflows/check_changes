@@ -1,9 +1,6 @@
 #!/bin/bash
 
-pwd
-ls -alh
-whoami
-stat .git
+git clone https://github.com/jstkdng/aur .
 
 git diff --name-only HEAD~1..HEAD | fgrep -q "${PACKAGE}"
 
