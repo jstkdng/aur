@@ -35,10 +35,10 @@ jobs:
                         "linux-amd-staging-drm-next-git"
                       ]
         steps:
-          #- name: Checkout latest commit
-          #   uses: actions/checkout@v3
-          #    with:
-          #        fetch-depth: 0
+            - name: Checkout latest commit
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
             - name: Check changes in package
               run: .github/workflows/check_changes
             - name: Check if package exists
