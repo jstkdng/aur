@@ -28,7 +28,6 @@ jobs:
                         "gminer-bin",
                         "phoenixminer-bin",
                         "linux-kamakiri",
-                        "libgss",
                         "p2pool-git",
                         "llvm-git",
                         "mesa-git",
