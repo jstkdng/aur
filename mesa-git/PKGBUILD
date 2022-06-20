@@ -12,31 +12,25 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=22.1.0_devel.151514.a5884df949e.d41d8cd98f00b204e9800998ecf8427e
+pkgver=22.2.0_devel.154303.e8eb6d13a5d.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
-              'ocl-icd' 'wayland-protocols' 'meson' 'ninja' 'glslang' 'llvm-git')
+              'wayland-protocols' 'meson' 'ninja' 'glslang' 'libclc' llvm=13.0.1 clang=13.0.1)
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'expat' 'llvm-libs-git')
-optdepends=('opengl-man-pages: for the OpenGL API man pages' 'llvm-git: opencl')
+         'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'expat' llvm-libs=13.0.1)
+optdepends=('opengl-man-pages: for the OpenGL API man pages' 'clang: opencl' 'compiler-rt: opencl')
 provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-swrast' 'vulkan-driver' 'mesa-libgl' 'opengl-driver' 'opencl-driver')
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-swrast' 'mesa-libgl')
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
-        'LICENSE'
-        'skip_0_count_draws.patch'
-        'testing.patch')
+        'LICENSE')
 md5sums=('SKIP'
-         '5c65a0fe315dd347e09b1f2826a1df5a'
-         'b107d5d230a6978419c33e309f21938b'
-         'SKIP')
+         '5c65a0fe315dd347e09b1f2826a1df5a')
 sha512sums=('SKIP'
-            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            '2db54f05dcb6ca7f30baa11e1e4a7b8882d28a362b82064fe21a9128702f0efb46159c16b4ae15f6626797d4636b06c9377df956820cf970d6afd0e2493238a7'
-            'SKIP')
+            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
@@ -90,13 +84,12 @@ prepare() {
 build () {
     meson setup mesa _build \
        -D b_ndebug=true \
-       -D b_lto=true \
        -D buildtype=plain \
        --wrap-mode=nofallback \
        -D prefix=/usr \
        -D sysconfdir=/etc \
        -D platforms=x11,wayland \
-       -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris,zink,crocus \
+       -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris,zink,crocus,i915 \
        -D vulkan-drivers=amd,intel,swrast,virtio-experimental \
        -D dri3=enabled \
        -D egl=enabled \
@@ -122,7 +115,8 @@ build () {
        -D vulkan-layers=device-select,overlay \
        -D tools=[] \
        -D zstd=enabled \
-       -D microsoft-clc=disabled
+       -D microsoft-clc=disabled \
+       -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc
        
     meson configure _build
     
