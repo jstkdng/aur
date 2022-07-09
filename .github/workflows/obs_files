@@ -136,38 +136,6 @@ EOF
 _empty_constraints
 }
 
-p2pool-git()
-{
-_git_pkg
-_empty_constraints
-
-# remove prepare function
-sed -i '/^prepare() {$/,/^}$/d' PKGBUILD
-
-source PKGBUILD
-
-# generate _service file
-cat > "_service" << EOF
-<services>
-  <service name="tar_scm">
-    <param name="scm">git</param>
-    <param name="url">https://github.com/SChernykh/p2pool.git</param>
-    <param name="filename">$_pkgname</param>
-    <param name="version">_none_</param>
-  </service>
-</services>
-EOF
-
-# add stuff to PKGBUILD
-cat >> "PKGBUILD" << EOF
-prepare() {
-  cd "$_pkgname"
-  mkdir -p build
-}
-source=("$_pkgname.tar")
-EOF
-}
-
 mesa-git()
 {
 _git_pkg
