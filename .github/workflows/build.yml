@@ -31,7 +31,8 @@ jobs:
                         "p2pool-git",
                         "llvm-git",
                         "mesa-git",
-                        "linux-amd-staging-drm-next-git"
+                        "linux-amd-staging-drm-next-git",
+                        "python-sphinx-automodapi"
                       ]
         steps:
             - name: Checkout latest commit

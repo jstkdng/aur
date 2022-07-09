@@ -54,37 +54,37 @@ EOF
 
 python-stdnum()
 {
-	python ../.github/workflows/mirror/gen-service.py
+    python ../.github/workflows/mirror/gen-service.py
 
-	_empty_constraints
+    _empty_constraints
 }
 
 libstdc++5()
 {
-	python ../.github/workflows/mirror/gen-service.py
+    python ../.github/workflows/mirror/gen-service.py
 
-	_empty_constraints
+    _empty_constraints
 }
 
 phoenixminer-bin()
 {
-	python ../.github/workflows/mirror/gen-service.py
+    python ../.github/workflows/mirror/gen-service.py
 
-	_empty_constraints
+    _empty_constraints
 }
 
 gminer-bin()
 {
-	python ../.github/workflows/mirror/gen-service.py
+    python ../.github/workflows/mirror/gen-service.py
 
-	_empty_constraints
+    _empty_constraints
 }
 
-libgss()
+python-sphinx-automodapi()
 {
-	python ../.github/workflows/mirror/gen-service.py
+    python ../.github/workflows/mirror/gen-service.py
 
-	_empty_constraints
+    _empty_constraints
 }
 
 ungoogled-chromium()
@@ -185,21 +185,13 @@ cat > "_service" << EOF
     <param name="filename">mesa</param>
     <param name="version">_none_</param>
   </service>
-  <service name="obs_scm">
-    <param name="scm">git</param>
-    <param name="url">https://github.com/jstkdng/aur</param>
-    <param name="subdir">$PACKAGE</param>
-    <param name="extract">[!PKGBUILD]*</param>
-  </service>
 </services>
 EOF
 
 # add stuff to PKGBUILD
 cat >> "PKGBUILD" << EOF
 source=(mesa.tar
-        'LICENSE'
-        'skip_0_count_draws.patch'
-		'testing.patch')
+        'LICENSE')
 EOF
 }
 
