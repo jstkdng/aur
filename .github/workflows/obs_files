@@ -257,13 +257,9 @@ EOF
 linux-firmware-git()
 {
 _git_pkg
+_empty_constraints
 
 source PKGBUILD
-
-# replace git url
-new_url="\$pkgbase.tar"
-sed_param=s/_srcurl=.*/_srcurl=\"${new_url}\"/
-sed -i "$sed_param" PKGBUILD
 
 # generate _service file
 cat > "_service" << EOF
@@ -284,7 +280,13 @@ cat > "_service" << EOF
 </services>
 EOF
 
-_empty_constraints
+# add stuff to PKGBUILD
+cat >> "PKGBUILD" << EOF
+source=("$pkgbase.tar"
+         0001-Add-support-for-compressing-firmware-in-copy-firmware.patch
+         0001-Add-support-for-compressing-firmware-in-copy-firmware-modified.patch
+         allow-inplace-rebuild.patch)
+EOF
 }
 
 linux-amd-staging-drm-next-git()
