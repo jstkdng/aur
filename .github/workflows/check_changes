@@ -5,7 +5,7 @@ rm -rf aur
 git clone https://github.com/jstkdng/aur
 cd aur
 
-git diff --name-only HEAD~1..HEAD | fgrep -q "${PACKAGE}"
+git diff --name-only HEAD~1..HEAD | fgrep -q "${PACKAGE}/"
 
 RET=$?
 if [[ $RET -eq 1 ]]; then
