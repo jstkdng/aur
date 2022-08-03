@@ -158,8 +158,7 @@ EOF
 
 # add stuff to PKGBUILD
 cat >> "PKGBUILD" << EOF
-source=(mesa.tar
-        'LICENSE')
+source[0]=mesa.tar
 EOF
 }
 
@@ -191,8 +190,7 @@ EOF
 
 # add stuff to PKGBUILD
 cat >> "PKGBUILD" << EOF
-source=(llvm-project.tar
-        "llvm-config.h")
+source[0]=llvm-project.tar
 EOF
 }
 
@@ -202,11 +200,6 @@ _git_pkg
 _empty_constraints
 
 source PKGBUILD
-
-# replace git url
-new_url="\${_pkgbase}.tar"
-sed_param=s/_srcurl=.*/_srcurl=\"${new_url}\"/
-sed -i "$sed_param" PKGBUILD
 
 # generate _service file
 cat > "_service" << EOF
@@ -224,6 +217,11 @@ cat > "_service" << EOF
     <param name="extract">[!PKGBUILD]*</param>
   </service>
 </services>
+EOF
+
+# add stuff to PKGBUILD
+cat >> "PKGBUILD" << EOF
+source[0]=${_pkgbase}.tar
 EOF
 
 }
@@ -282,10 +280,7 @@ EOF
 
 # add stuff to PKGBUILD
 cat >> "PKGBUILD" << EOF
-source=("$pkgbase.tar"
-         0001-Add-support-for-compressing-firmware-in-copy-firmware.patch
-         0001-Add-support-for-compressing-firmware-in-copy-firmware-modified.patch
-         allow-inplace-rebuild.patch)
+source[0]="$pkgbase.tar"
 EOF
 }
 
