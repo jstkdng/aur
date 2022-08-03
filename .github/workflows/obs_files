@@ -52,6 +52,16 @@ cat > "_constraints" << EOF
 EOF
 }
 
+mongodb44()
+{
+    mongodb
+}
+
+mongodb50()
+{
+    mongodb
+}
+
 python-stdnum()
 {
     python ../.github/workflows/mirror/gen-service.py
