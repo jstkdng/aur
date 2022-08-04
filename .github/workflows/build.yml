@@ -26,6 +26,7 @@ jobs:
                         "mongodb44",
                         "mongodb50",
                         "python-stdnum",
+                        "libva-vdpau-driver-wayland",
                         "libstdc++5",
                         "gminer-bin",
                         "phoenixminer-bin",

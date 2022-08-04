@@ -62,6 +62,13 @@ mongodb50()
     mongodb
 }
 
+libva-vdpau-driver-wayland()
+{
+    python ../.github/workflows/mirror/gen-service.py
+
+    _empty_constraints
+}
+
 python-stdnum()
 {
     python ../.github/workflows/mirror/gen-service.py
