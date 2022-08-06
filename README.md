@@ -29,3 +29,8 @@ pacman-key --lsign-key "${fingerprint}"
 
 After this you should be able to install any packages I maintain.
 
+### Donations
+
+If you like my work you can send some XMR my way.
+
+XMR address: 8BRt2qYXjyR9Bb2CXtjVWSYNCepqgcZkheoMWTXTNmwLLU3ZEscuxtYFGaytSMNn1FETLdbdhXimCTTLSkN5r5j7SEBLMho
