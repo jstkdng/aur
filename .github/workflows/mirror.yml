@@ -33,7 +33,9 @@ jobs:
                         "rocm-cmake",
                         "rocm-device-libs",
                         "hsa-amd-aqlprofile-bin",
-                        "hsakmt-roct"
+                        "hsakmt-roct",
+                        "hsa-rocr",
+                        "comgr"
                       ]
         steps:
             - name: Checkout latest commit
