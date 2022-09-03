@@ -6,7 +6,9 @@ fi
 
 cd ${PACKAGE}
 
-# TODO: generate constraints programatically
+large=("rocm-llvm" "qt4")
+
+if [[ " ${large[*]} " =~ " ${PACKAGE} " ]]; then
 cat > "_constraints" << EOF
 <!-- vim: set ft=xml : -->
 <constraints>
@@ -21,6 +23,16 @@ cat > "_constraints" << EOF
 </constraints>
 
 EOF
+fi
+
+if [[ ! " ${large[*]} " =~ " ${PACKAGE} " ]]; then
+cat > "_constraints" << EOF
+<!-- vim: set ft=xml : -->
+<constraints>
+</constraints>
+
+EOF
+fi
 
 # generate _service file
 python ../.github/workflows/mirror/gen-service.py

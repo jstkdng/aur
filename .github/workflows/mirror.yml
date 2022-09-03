@@ -31,7 +31,9 @@ jobs:
                         "qt4",
                         "rocm-llvm",
                         "rocm-cmake",
-                        "rocm-device-libs"
+                        "rocm-device-libs",
+                        "hsa-amd-aqlprofile-bin",
+                        "hsakmt-roct"
                       ]
         steps:
             - name: Checkout latest commit
