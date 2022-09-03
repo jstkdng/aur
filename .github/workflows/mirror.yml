@@ -36,15 +36,14 @@ jobs:
                         "hsakmt-roct",
                         "hsa-rocr",
                         "comgr",
-                        "rocminfo"
+                        "rocminfo",
+                        "hip-runtime-amd"
                       ]
         steps:
             - name: Checkout latest commit
               uses: actions/checkout@v3
               with:
                   fetch-depth: 0
-            - name: Update and install packages
-              run: pacman -Syu --noconfirm python-jinja python-srcinfo
             - name: Check if package exists
               run: .github/workflows/mirror/check-package-exists
             - name: Check if update is required
