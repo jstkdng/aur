@@ -30,7 +30,8 @@ jobs:
                         "teamredminer-bin",
                         "qt4",
                         "rocm-llvm",
-                        "rocm-cmake"
+                        "rocm-cmake",
+                        "rocm-device-libs"
                       ]
         steps:
             - name: Checkout latest commit
