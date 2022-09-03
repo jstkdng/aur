@@ -35,7 +35,8 @@ jobs:
                         "hsa-amd-aqlprofile-bin",
                         "hsakmt-roct",
                         "hsa-rocr",
-                        "comgr"
+                        "comgr",
+                        "rocminfo"
                       ]
         steps:
             - name: Checkout latest commit
