@@ -29,7 +29,8 @@ jobs:
                         "xmrig-mo",
                         "teamredminer-bin",
                         "qt4",
-                        "rocm-llvm"
+                        "rocm-llvm",
+                        "rocm-cmake"
                       ]
         steps:
             - name: Checkout latest commit
