@@ -37,7 +37,8 @@ jobs:
                         "hsa-rocr",
                         "comgr",
                         "rocminfo",
-                        "hip-runtime-amd"
+                        "hip-runtime-amd",
+                        "rocm-opencl-runtime"
                       ]
         steps:
             - name: Checkout latest commit
