@@ -38,7 +38,8 @@ jobs:
                         "comgr",
                         "rocminfo",
                         "hip-runtime-amd",
-                        "rocm-opencl-runtime"
+                        "rocm-opencl-runtime",
+                        "mysql"
                       ]
         steps:
             - name: Checkout latest commit

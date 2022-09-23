@@ -6,7 +6,7 @@ fi
 
 cd ${PACKAGE}
 
-large=("rocm-llvm" "qt4")
+large=("rocm-llvm" "qt4" "mysql")
 
 if [[ " ${large[*]} " =~ " ${PACKAGE} " ]]; then
 cat > "_constraints" << EOF
