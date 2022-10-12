@@ -4,9 +4,9 @@ if [[ ${no_changes+x} ]]; then
     exit 0
 fi
 
-source ../.github/workflows/obs_files
-
 cd ${PACKAGE}
+
+source ../.github/workflows/obs_files
 
 large=("rocm-llvm" "qt4" "mysql")
 
