@@ -4,6 +4,7 @@ AUTH="authorization: Basic $OBS_AUTH"
 BASE_URL="https://build.opensuse.org/source/$OBS_PROJECT/$PACKAGE/_service:obs_scm"
 
 git clone https://aur.archlinux.org/${PACKAGE}.git
+chown -R build:build $PACKAGE
 
 # if it's new package can't do verification
 if [[ ${new_pkg+x} ]]; then
