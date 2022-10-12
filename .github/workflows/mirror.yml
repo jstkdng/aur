@@ -32,7 +32,6 @@ jobs:
                         "rocm-llvm",
                         "rocm-cmake",
                         "rocm-device-libs",
-                        "hsa-amd-aqlprofile-bin",
                         "hsakmt-roct",
                         "hsa-rocr",
                         "comgr",

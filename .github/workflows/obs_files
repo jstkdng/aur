@@ -76,6 +76,10 @@ cat > "_service" << EOF
 </services>
 EOF
 
+
+# remove prepare function
+sed -i '/^prepare() {$/,/^}$/d' PKGBUILD
+
 # add stuff to PKGBUILD
 cat >> "PKGBUILD" << EOF
 source[0]=blender.tar
@@ -83,6 +87,13 @@ source[1]=""
 source[2]=""
 source[3]=""
 source[4]=""
+
+prepare() {
+  cd "$_pkgname"
+
+  patch -p1 -i "$srcdir"/force-draco1.patch
+  patch -p1 -d release/scripts/addons -i "$srcdir"/force-draco2.patch
+}
 EOF
 
 }

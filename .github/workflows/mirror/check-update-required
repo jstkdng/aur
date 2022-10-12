@@ -13,7 +13,7 @@ fi
 cd ${PACKAGE}
 
 curl -H "$AUTH" "$BASE_URL:PKGBUILD" -o PKGBUILD.old
-makepkg -p PKGBUILD.old --printsrcinfo | cmp -s .SRCINFO -
+sudo -u build makepkg -p PKGBUILD.old --printsrcinfo | cmp -s .SRCINFO -
 
 # exit code 0 means there's no need to update
 if [[ $? -eq 0 ]]; then
