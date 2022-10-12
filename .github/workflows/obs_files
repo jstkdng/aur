@@ -52,6 +52,41 @@ cat > "_constraints" << EOF
 EOF
 }
 
+blender-rocm()
+{
+source PKGBUILD
+
+_gen_constraints
+
+cat > "_service" << EOF
+<!-- vi:set ft=xml: -->
+<services>
+    <service name="tar_scm">
+        <param name="scm">git</param>
+        <param name="url">https://git.blender.org/blender.git</param>
+        <param name="revision">v$pkgver</param>
+        <param name="filename">blender</param>
+        <param name="version">_none_</param>
+    </service>
+    <service name="obs_scm">
+        <param name="scm">git</param>
+        <param name="url">https://aur.archlinux.org/$pkgname</param>
+        <param name="extract">[!PKGBUILD]*</param>
+    </service>
+</services>
+EOF
+
+# add stuff to PKGBUILD
+cat >> "PKGBUILD" << EOF
+source[0]=blender.tar
+source[1]=""
+source[2]=""
+source[3]=""
+source[4]=""
+EOF
+
+}
+
 mongodb44()
 {
     mongodb

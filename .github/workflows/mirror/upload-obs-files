@@ -9,7 +9,7 @@ cd "$PACKAGE"
 AUTH="authorization: Basic $OBS_AUTH"
 BASE_URL="https://api.opensuse.org/source/$OBS_PROJECT/$PACKAGE"
 
-declare -a FILES=(_service _constraints)
+declare -a FILES=(_service _constraints PKGBUILD)
 
 for FILE in "${FILES[@]}"
 do

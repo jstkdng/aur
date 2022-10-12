@@ -39,7 +39,8 @@ jobs:
                         "rocminfo",
                         "hip-runtime-amd",
                         "rocm-opencl-runtime",
-                        "mysql"
+                        "mysql",
+                        "blender-rocm"
                       ]
         steps:
             - name: Checkout latest commit

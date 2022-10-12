@@ -4,6 +4,8 @@ if [[ ${no_changes+x} ]]; then
     exit 0
 fi
 
+source ../.github/workflows/obs_files
+
 cd ${PACKAGE}
 
 large=("rocm-llvm" "qt4" "mysql")
@@ -34,6 +36,11 @@ cat > "_constraints" << EOF
 EOF
 fi
 
-# generate _service file
-python ../.github/workflows/mirror/gen-service.py
+"$PACKAGE"
+
+RET=$?
+if [[ $RET -eq 1 ]]; then
+    # generate _service file
+    python ../.github/workflows/mirror/gen-service.py
+fi
 

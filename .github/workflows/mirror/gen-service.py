@@ -18,7 +18,7 @@ TEMPLATE_STR = """<!-- vim: set ft=xml: -->
     <service name="obs_scm">
         <param name="scm">git</param>
         <param name="url">https://aur.archlinux.org/{{ pkg.name }}</param>
-        <param name="extract">*</param>
+        <param name="extract">[!PKGBUILD]*</param>
     </service>
 {%- elif not pkg.only_pkgbuild %}
     <service name="obs_scm">
