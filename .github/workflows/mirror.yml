@@ -27,7 +27,6 @@ jobs:
                         "python-cheetah3",
                         "xmrig-donateless",
                         "xmrig-mo",
-                        "teamredminer-bin",
                         "qt4",
                         "rocm-llvm",
                         "rocm-cmake",
