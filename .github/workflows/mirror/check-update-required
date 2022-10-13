@@ -18,6 +18,6 @@ sudo -u build makepkg -p PKGBUILD.old --printsrcinfo | cmp -s .SRCINFO -
 
 # exit code 0 means there's no need to update
 if [[ $? -eq 0 ]]; then
-	echo "no_changes=1" >> $GITHUB_ENV
+	#echo "no_changes=1" >> $GITHUB_ENV
 fi
 
