@@ -75,7 +75,7 @@ def main():
     cwd = Path.cwd()
     files = [x for x in cwd.iterdir()]
     empty_dir = True
-    ignore = ['PKGBUILD', '.SRCINFO', '.gitignore', '_constraints', '_service']
+    ignore = ['PKGBUILD', '.SRCINFO', '.gitignore', '_constraints', '_service', '.git']
     for file in files:
         if file.stem not in ignore:
             pkg["only_pkgbuild"] = False

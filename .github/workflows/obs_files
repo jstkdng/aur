@@ -90,10 +90,10 @@ sha512sums=('SKIP'
             '527ab66e5eace777de0043c1ca5787a488f6471450ce67fd6d08137ad0ef56177bc0c17696f30a5fca23fa55d8ca9c3f30cb7b17550dba2dbd8e89ca0b361990')
 
 prepare() {
-  cd "$_pkgname"
+  cd "\$_pkgname"
 
-  patch -p1 -i "$srcdir"/force-draco1.patch
-  patch -p1 -d release/scripts/addons -i "$srcdir"/force-draco2.patch
+  patch -p1 -i "\$srcdir"/force-draco1.patch
+  patch -p1 -d release/scripts/addons -i "\$srcdir"/force-draco2.patch
 }
 EOF
 
