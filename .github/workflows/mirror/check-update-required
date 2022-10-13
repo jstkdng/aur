@@ -1,7 +1,7 @@
 #!/bin/bash
 
 AUTH="authorization: Basic $OBS_AUTH"
-BASE_URL="https://build.opensuse.org/source/$OBS_PROJECT/$PACKAGE/_service:obs_scm"
+BASE_URL="https://build.opensuse.org/source/$OBS_PROJECT/$PACKAGE"
 
 git clone https://aur.archlinux.org/${PACKAGE}.git
 chown -R build:build $PACKAGE
@@ -13,7 +13,8 @@ fi
 
 cd ${PACKAGE}
 
-curl -H "$AUTH" "$BASE_URL:PKGBUILD" -o PKGBUILD.old
+curl -H "$AUTH" "$BASE_URL/PKGBUILD" -o PKGBUILD.old
+cat PKGBUILD.old
 sudo -u build makepkg -p PKGBUILD.old --printsrcinfo | cmp -s .SRCINFO -
 
 # exit code 0 means there's no need to update

@@ -39,7 +39,7 @@ fi
 "$PACKAGE"
 
 RET=$?
-if [[ $RET -eq 1 ]]; then
+if [[ $RET -ne 0 ]]; then
     # generate _service file
     python ../.github/workflows/mirror/gen-service.py
 fi
