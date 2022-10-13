@@ -15,7 +15,6 @@ cd ${PACKAGE}
 
 curl -XGET -H "$AUTH" "$BASE_URL/PKGBUILD" -o PKGBUILD.old
 sudo -u build makepkg -p PKGBUILD.old --printsrcinfo | cmp -s .SRCINFO -
-exit 0
 
 # exit code 0 means there's no need to update
 if [[ $? -eq 0 ]]; then
