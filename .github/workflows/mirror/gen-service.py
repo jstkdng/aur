@@ -14,7 +14,7 @@ TEMPLATE_STR = """<!-- vim: set ft=xml: -->
         <param name="filename">{{ source.filename }}</param>
     </service>
 {%- endfor %}
-{%- if pkg.mirror %}
+{%- if pkg.mirror and not pkg.only_pkgbuild %}
     <service name="obs_scm">
         <param name="scm">git</param>
         <param name="url">https://aur.archlinux.org/{{ pkg.name }}</param>
