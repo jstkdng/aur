@@ -121,10 +121,10 @@ prepare() {
   cd "\$_pkgname"
 
   rmdir release/scripts/{addons,addons_contrib} release/datafiles/locale source/tools
-  ln -s "\${srcdir}/blender-addons" release/scripts/addons
-  ln -s "\${srcdir}/blender-addons-contrib" release/scripts/addons_contrib
-  ln -s "\${srcdir}/blender-translations" release/datafiles/locale
-  ln -s "\${srcdir}/blender-dev-tools" source/tools
+  cp -r "\${srcdir}/blender-addons" release/scripts/addons
+  cp -r "\${srcdir}/blender-addons-contrib" release/scripts/addons_contrib
+  cp -r "\${srcdir}/blender-translations" release/datafiles/locale
+  cp -r "\${srcdir}/blender-dev-tools" source/tools
 
   patch -p1 -i "\$srcdir"/force-draco1.patch
   patch -p1 -d release/scripts/addons -i "\$srcdir"/force-draco2.patch
