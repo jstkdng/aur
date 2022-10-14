@@ -67,6 +67,7 @@ cat > "_service" << EOF
         <param name="revision">v$pkgver</param>
         <param name="filename">blender</param>
         <param name="version">_none_</param>
+        <param name="submodules">disable</param>
     </service>
     <service name="tar_scm">
         <param name="scm">git</param>
