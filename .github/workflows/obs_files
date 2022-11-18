@@ -57,10 +57,35 @@ hsakmt-roct()
 
 python ../.github/workflows/mirror/gen-service.py
 
-_empty_constraints
+cat > "_constraints" << EOF
+<!-- vim: set ft=xml : -->
+<constraints>
+  <hardware>
+    <memory>
+      <size unit="G">8</size>
+    </memory>
+  </hardware>
+</constraints>
+EOF
 
 # remove check function
 sed -i '/^check() {$/,/^}$/d' PKGBUILD
+}
+
+hsa-rocr()
+{
+python ../.github/workflows/mirror/gen-service.py
+
+cat > "_constraints" << EOF
+<!-- vim: set ft=xml : -->
+<constraints>
+  <hardware>
+    <memory>
+      <size unit="G">8</size>
+    </memory>
+  </hardware>
+</constraints>
+EOF
 }
 
 blender-rocm()
