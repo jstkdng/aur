@@ -52,6 +52,17 @@ cat > "_constraints" << EOF
 EOF
 }
 
+hsakmt-roct()
+{
+
+python ../.github/workflows/mirror/gen-service.py
+
+_empty_constraints
+
+# remove check function
+sed -i '/^check() {$/,/^}$/d' PKGBUILD
+}
+
 blender-rocm()
 {
 source PKGBUILD
