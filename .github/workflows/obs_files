@@ -36,6 +36,20 @@ cat > "_constraints" << EOF
 EOF
 }
 
+_medium_constraints()
+{
+cat > "_constraints" << EOF
+<!-- vim: set ft=xml : -->
+<constraints>
+  <hardware>
+    <memory>
+      <size unit="G">8</size>
+    </memory>
+  </hardware>
+</constraints>
+EOF
+}
+
 mongodb()
 {
 python ../.github/workflows/mirror/gen-service.py
@@ -77,16 +91,7 @@ rocm-opencl-runtime()
 
 python ../.github/workflows/mirror/gen-service.py
 
-cat > "_constraints" << EOF
-<!-- vim: set ft=xml : -->
-<constraints>
-  <hardware>
-    <memory>
-      <size unit="G">8</size>
-    </memory>
-  </hardware>
-</constraints>
-EOF
+_medium_constraints
 
 # remove check function
 sed -i '/^check() {$/,/^}$/d' PKGBUILD
@@ -409,7 +414,7 @@ EOF
 linux-firmware-git()
 {
 _git_pkg
-_empty_constraints
+_medium_constraints
 
 source PKGBUILD
 
