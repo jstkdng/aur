@@ -1,5 +1,10 @@
 name: Build packages
-on: push
+on:
+    push:
+        paths:
+          - "!.docker/**"
+          - "!.github/**"
+          - ".github/workflows/build.yml"
 
 defaults:
     run:
