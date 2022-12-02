@@ -4,8 +4,9 @@ on:
   push:
     paths:
       - ".docker/**"
+      - ".github/workflows/docker.yml"
   schedule:
-      - cron: "* * * * 0"
+      - cron: "0 0 * * *"
 
 jobs:
   docker:
