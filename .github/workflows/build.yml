@@ -17,7 +17,7 @@ jobs:
             OBS_AUTH: ${{ secrets.OBS_AUTH }}
             OBS_PROJECT: ${{ secrets.OBS_PROJECT }}
         runs-on: ubuntu-latest
-        container: justkdng/archlinux:latest
+        container: justkdng/aur:latest
         strategy:
             fail-fast: false
             matrix:
