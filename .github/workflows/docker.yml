@@ -4,8 +4,9 @@ on:
   push:
     paths:
       - ".docker/**"
+      - ".github/workflows/docker.yml"
   schedule:
-      - cron: "* * * * 0"
+      - cron: "0 0 * * *"
 
 jobs:
   docker:
@@ -29,4 +30,4 @@ jobs:
         with:
           push: true
           tags: justkdng/aur:latest
-          context: .docker
+          context: "{{defaultContext}}:.docker"
