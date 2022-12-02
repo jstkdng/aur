@@ -20,15 +20,10 @@ RUN /tmp/add-obs-repo.sh
 RUN yes | pacman -Sy archlinux-keyring
 
 # update and install packages
-RUN yes | pacman -Syu git wget python-jinja python-srcinfo
+RUN yes | pacman -Syu git wget python-jinja python-srcinfo jack2
 
 USER build
 WORKDIR /home/build
-
-# install yay which can be used to install AUR dependencies
-#RUN git clone https://aur.archlinux.org/yay.git
-#RUN cd yay && makepkg --syncdeps --install --rmdeps --noconfirm
-#RUN cd .. && rm -rf yay
 
 # switch back to root for regular usage
 USER root
