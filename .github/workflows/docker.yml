@@ -30,4 +30,4 @@ jobs:
         with:
           push: true
           tags: justkdng/aur:latest
-          context: .docker
+          context: "{{defaultContext}}:.docker"
