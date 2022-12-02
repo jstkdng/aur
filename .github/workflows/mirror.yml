@@ -38,7 +38,8 @@ jobs:
                         "hip-runtime-amd",
                         "rocm-opencl-runtime",
                         "mysql",
-                        "blender-rocm"
+                        "blender-rocm",
+                        "python-cppheaderparser"
                       ]
         steps:
             - name: Checkout latest commit
