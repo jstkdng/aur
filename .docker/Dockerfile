@@ -26,9 +26,9 @@ USER build
 WORKDIR /home/build
 
 # install yay which can be used to install AUR dependencies
-RUN git clone https://aur.archlinux.org/yay.git
-RUN cd yay && makepkg --syncdeps --install --rmdeps --noconfirm
-RUN cd .. && rm -rf yay
+#RUN git clone https://aur.archlinux.org/yay.git
+#RUN cd yay && makepkg --syncdeps --install --rmdeps --noconfirm
+#RUN cd .. && rm -rf yay
 
 # switch back to root for regular usage
 USER root
