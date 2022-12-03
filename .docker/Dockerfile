@@ -20,7 +20,7 @@ RUN /tmp/add-obs-repo.sh
 RUN yes | pacman -Sy archlinux-keyring
 
 # update and install packages
-RUN yes | pacman -Syu git wget python-jinja python-srcinfo jack2
+RUN yes | pacman -Syu git wget python-jinja python-srcinfo
 
 USER build
 WORKDIR /home/build
