@@ -1,0 +1,5 @@
+*.asc
+*.tgz
+logs/
+*.pkg.tar.xz
+*.sig
