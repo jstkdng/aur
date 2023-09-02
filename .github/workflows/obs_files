@@ -50,6 +50,24 @@ cat > "_constraints" << EOF
 EOF
 }
 
+_large_constraints()
+{
+cat > "_constraints" << EOF
+<!-- vim: set ft=xml : -->
+<constraints>
+  <hardware>
+    <disk>
+      <size unit="G">24</size>
+    </disk>
+    <physicalmemory>
+      <size unit="G">24</size>
+    </physicalmemory>
+  </hardware>
+</constraints>
+EOF
+
+}
+
 mongodb()
 {
 python ../.github/workflows/mirror/gen-service.py
@@ -260,7 +278,7 @@ sed -r -i \
 
 python ../.github/workflows/mirror/gen-service.py
 
-_gen_constraints
+_large_constraints
 }
 
 xorgproto-git()
