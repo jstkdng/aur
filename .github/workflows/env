@@ -8,10 +8,6 @@ fi
 
 cd "$PACKAGE"
 
-source PKGBUILD
-pacman -Syu --noconfirm "${makedepends[@]}"
-yes | pacman -Scc
-
 cp ./* /home/build
 
 chown -R build:build /home/build
