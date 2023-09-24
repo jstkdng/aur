@@ -4,11 +4,15 @@ if [[ ${no_changes+x} ]]; then
     exit 0
 fi
 
-pacman -Syu --noconfirm wget jre-openjdk-headless jack2 python-jinja python-srcinfo extra/mesa
+# pacman -Syu --noconfirm wget jre-openjdk-headless jack2 python-jinja python-srcinfo extra/mesa
 
 cd "$PACKAGE"
 
-cp * /home/build
+source PKGBUILD
+pacman -Syu --noconfirm "${makedepends[@]}"
+yes | pacman -Scc
+
+cp ./* /home/build
 
 chown -R build:build /home/build
 
