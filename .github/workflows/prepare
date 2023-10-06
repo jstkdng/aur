@@ -6,6 +6,10 @@ fi
 
 set -e
 
-cd $HOME
+cd "$HOME"
+
+if [[ $PACKAGE = "ungoogled-chromium" ]]; then
+    exit 0
+fi
 
 yes | makepkg --nodeps --nobuild --skippgpcheck
