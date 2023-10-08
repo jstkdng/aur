@@ -1,6 +1,6 @@
 pkgbase = sip4
 	pkgver = 4.19.25
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.riverbankcomputing.com/software/sip/intro
 	arch = x86_64
 	license = custom:"sip"
@@ -13,11 +13,10 @@ pkgbase = sip4
 pkgname = sip4
 	pkgdesc = A tool that makes it easy to create Python bindings for C and C++ libraries
 	depends = glibc
-	provides = sip
-	conflicts = sip
+	provides = sip4
 
 pkgname = python-sip4
 	pkgdesc = Python SIP4 bindings for C and C++ libraries
 	depends = python
-	provides = python-sip
-	replaces = python-sip
+	provides = python-sip4
+	replaces = python-sip4
