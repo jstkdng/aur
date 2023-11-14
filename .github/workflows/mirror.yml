@@ -28,17 +28,7 @@ jobs:
                         "xmrig-donateless",
                         "xmrig-mo",
                         "qt4",
-                        "rocm-llvm",
-                        "rocm-cmake",
-                        "rocm-device-libs",
-                        "hsakmt-roct",
-                        "hsa-rocr",
-                        "comgr",
-                        "rocminfo",
-                        "hip-runtime-amd",
-                        "rocm-opencl-runtime",
                         "mysql",
-                        "blender-rocm",
                         "python-cppheaderparser"
                       ]
         steps:
