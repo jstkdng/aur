@@ -20,7 +20,6 @@ jobs:
             matrix:
                 PKGS: [
                         "xorgproto-git",
-                        "linux-firmware-git",
                         "xorg-server-git",
                         "xf86-video-amdgpu-git"
                       ]
