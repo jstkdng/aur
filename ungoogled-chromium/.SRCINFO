@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium
 	pkgdesc = A lightweight approach to removing Google web service dependency
-	pkgver = 124.0.6367.60
-	pkgrel = 1
+	pkgver = 124.0.6367.201
+	pkgrel = 2
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
 	license = BSD-3-Clause
@@ -15,6 +15,7 @@ pkgbase = ungoogled-chromium
 	makedepends = pipewire
 	makedepends = rust
 	makedepends = qt5-base
+	makedepends = qt6-base
 	makedepends = java-runtime-headless
 	makedepends = git
 	depends = gtk3
@@ -48,35 +49,36 @@ pkgbase = ungoogled-chromium
 	depends = freetype2
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = kdialog: support for native dialogs in Plasma
-	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = chromium-extension-web-store: Web Store Functionality
-	provides = chromium=124.0.6367.60
-	provides = chromedriver=124.0.6367.60
+	provides = chromium=124.0.6367.201
+	provides = chromedriver=124.0.6367.201
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-124.0.6367.60.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-124.0.6367.201.tar.xz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/124/chromium-patches-124.tar.bz2
+	source = fix-a-missing-build-dependency.patch
 	source = drop-flag-unsupported-by-clang17.patch
 	source = compiler-rt-adjust-paths.patch
 	source = use-oauth2-client-switches-as-default.patch
-	source = ungoogled-chromium-124.0.6367.60-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/124.0.6367.60-1.tar.gz
+	source = ungoogled-chromium-124.0.6367.201-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/124.0.6367.201-1.tar.gz
 	source = 0001-vaapi-flag-ozone-wayland.patch
 	source = 0001-adjust-buffer-format-order.patch
 	source = 0001-enable-linux-unstable-deb-target.patch
 	source = 0001-ozone-wayland-implement-text_input_manager_v3.patch
 	source = 0001-ozone-wayland-implement-text_input_manager-fixes.patch
-	sha256sums = ebd553527149cb8477a522df90acd6cea2388a6f431e2db589a0301df1d0cae2
+	sha256sums = 11773c4cfce4b39ae1bbe711b2907cb86e9aa299b7c6a71656edb876f0c85992
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = c2bc4e65ed2a4e23528dd10d5c15bf99f880b7bbb789cc720d451b78098a7e12
+	sha256sums = 75e1482d1b27c34ebe9d4bf27104fedcc219cdd95ce71fc41e77a486befd3f93
 	sha256sums = 3bd35dab1ded5d9e1befa10d5c6c4555fe0a76d909fb724ac57d0bf10cb666c1
 	sha256sums = b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961
 	sha256sums = e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711
-	sha256sums = 10996c17d79b4bf1baccc3138e6103c39379ca2f5bdc72092e67e4dda7a527a7
+	sha256sums = 1572690cd4dbe6ae038227575e4d34688bd5911853bce7795bf79db9fdbc9647
 	sha256sums = 9a5594293616e1390462af1f50276ee29fd6075ffab0e3f944f6346cb2eb8aec
 	sha256sums = 8ba5c67b7eb6cacd2dbbc29e6766169f0fca3bbb07779b1a0a76c913f17d343f
 	sha256sums = 2a44756404e13c97d000cc0d859604d6848163998ea2f838b3b9bb2c840967e3
