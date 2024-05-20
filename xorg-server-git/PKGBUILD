@@ -14,7 +14,7 @@ pkgname=(
   'xorg-server-xvfb-git'
 )
 _pkgbase='xserver'
-pkgver=21.1.99.1.r256.g6907b6ea2
+pkgver=21.1.99.1.r1061.ge61bd1e5f
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -54,7 +54,7 @@ build() {
   # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
   export CFLAGS=${CFLAGS/-fno-plt}
   export CXXFLAGS=${CXXFLAGS/-fno-plt}
-  export LDFLAGS=${LDFLAGS/,-z,now}
+  export LDFLAGS=${LDFLAGS/-Wl,-z,now}
 
   arch-meson "${_pkgbase}" build \
     -D ipv6=true \
