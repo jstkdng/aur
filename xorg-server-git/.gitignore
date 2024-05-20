@@ -1,6 +1,0 @@
-xserver/
-src/
-pkg/
-*.pkg.*
-*.log
-PKG-orig
