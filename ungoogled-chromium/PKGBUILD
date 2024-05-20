@@ -59,6 +59,7 @@ optdepends=("${optdepends[@]}"
             'chromium-extension-web-store: Web Store Functionality')
 source=("${source[@]}"
         "$pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz"
+        ninja-1.11.patch
         0001-vaapi-flag-ozone-wayland.patch
         0001-adjust-buffer-format-order.patch
         0001-enable-linux-unstable-deb-target.patch
@@ -66,6 +67,7 @@ source=("${source[@]}"
         0001-ozone-wayland-implement-text_input_manager-fixes.patch)
 sha256sums=("${sha256sums[@]}"
             '306409b826eeaed7484ebc8283eb538f51d364ef6ceeb35c178a44ff18dfb6e6'
+            '1a17064c2a2ba35fddca4f9a5f42a3eb386078a0ed8f9f38641543989b04c037'
             '9a5594293616e1390462af1f50276ee29fd6075ffab0e3f944f6346cb2eb8aec'
             '8ba5c67b7eb6cacd2dbbc29e6766169f0fca3bbb07779b1a0a76c913f17d343f'
             '2a44756404e13c97d000cc0d859604d6848163998ea2f838b3b9bb2c840967e3'
@@ -154,6 +156,7 @@ prepare() {
   # https://chromium-review.googlesource.com/c/chromium/src/+/3750452
   #patch -Np1 -i ../0001-ozone-wayland-implement-text_input_manager_v3.patch
   #patch -Np1 -i ../0001-ozone-wayland-implement-text_input_manager-fixes.patch
+  patch -Np1 -i ../ninja-1.11.patch
 
   # Enable VAAPI on Wayland
   # https://discourse.ubuntu.com/t/chromium-hardware-accelerated-build-for-intel-based-platforms-available-for-beta-testing/35625
