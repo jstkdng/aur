@@ -12,7 +12,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=125.0.6422.60
-pkgrel=2
+pkgrel=3
 _launcher_ver=8
 _manual_clone=0
 _system_clang=1
