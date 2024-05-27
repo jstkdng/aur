@@ -1,6 +1,7 @@
 mongodb-*.pkg.tar.zst
 mongodb-src-*.tar.gz
 mongodb-*.log
+*.tar.*
 PKGBUILD-namcap.log
 pkg/
 src/
