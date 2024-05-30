@@ -6,6 +6,7 @@ patches=(
     0001-ozone-wayland-implement-text_input_manager-fixes.patch
     0001-ozone-wayland-implement-text_input_manager_v3.patch
     0001-vaapi-flag-ozone-wayland.patch
+    ninja-1.11.patch
 )
 
 mkdir tmp
