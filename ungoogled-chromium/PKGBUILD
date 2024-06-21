@@ -11,7 +11,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
-pkgver=126.0.6478.55
+pkgver=126.0.6478.114
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -38,7 +38,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         drop-flag-unsupported-by-clang17.patch
         compiler-rt-adjust-paths.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('7ccef206f8c99e6a17b927b1b6d8018da808d75a0f46998282e0ca6cb80fe4c9'
+sha256sums=('cf4aad7fccc2a6c2339691c23f4c46ef2818e2474a9f83292b237eaa958015ed'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'daf0df74d2601c35fd66a746942d9ca3fc521ede92312f85af51d94c399fd6e0'
             '8f81059d79040ec598b5fb077808ec69d26d6c9cbebf9c4f4ea48b388a2596c5'
@@ -66,7 +66,7 @@ source=("${source[@]}"
         0001-ozone-wayland-implement-text_input_manager_v3.patch
         0001-ozone-wayland-implement-text_input_manager-fixes.patch)
 sha256sums=("${sha256sums[@]}"
-            '2cbae205af05dd7bd6424b3e8be4a0664f9174ab3a4987c0e9ccbdcb638228ff'
+            'ef62c96b0689f2df38636e84a3fffdb924fdcd51ad0b6ec611045ebf58d9f550'
             '813e6a1209ab72e4ab34f5f062412087e9664189d7b8f1dc1d0bb9481c574c45'
             '9a5594293616e1390462af1f50276ee29fd6075ffab0e3f944f6346cb2eb8aec'
             '8ba5c67b7eb6cacd2dbbc29e6766169f0fca3bbb07779b1a0a76c913f17d343f'

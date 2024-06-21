@@ -14,7 +14,7 @@ mv "${patches[@]}" tmp
 
 rm ./*.patch
 git clone https://gitlab.archlinux.org/archlinux/packaging/packages/chromium
-(cd chromium && git checkout 29d40a45d11a56a36027bb128f70c9cd1a90edf3)
+#(cd chromium && git checkout 29d40a45d11a56a36027bb128f70c9cd1a90edf3)
 mv chromium/*.patch .
 nvim -d PKGBUILD chromium/PKGBUILD
 makepkg --printsrcinfo > .SRCINFO
